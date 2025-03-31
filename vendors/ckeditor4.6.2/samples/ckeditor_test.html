@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html >
+    <head>
+        <title>CKEditor Sample Example</title>
+        <meta charset="UTF-8">
+        <script src="../ckeditor.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            
+        </script>
+    </head>
+    <body>
+        <form name="example" method=post action="ckeditor_test.php"  id="form" onSubmit="return Validation();"  autocomplete="off">
+            <textarea name="editor1" id="editor1" rows="10" cols="80">
+                This is first program in CKEditor by Anand.
+            </textarea>
+            <input type="submit"  name="Save" value="Save">
+            <script>
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                // CKEDITOR.replace( 'editor1' );
+                
+                CKEDITOR.replace( 'editor1', {
+                extraPlugins: 'tableresize,autogrow,imgbrowse',
+                //autoGrow_maxHeight: 500,                
+                'filebrowserImageBrowseUrl': '/test/ckeditor/plugins/imgbrowse/imgbrowse.html?',
+                // Remove the Resize plugin as it does not make sense to use it in conjunction with the AutoGrow plugin.
+                removePlugins: 'resize'
+                });
+                
+                
+            
+                function Validation(){
+                    var data = CKEDITOR.instances.editor1.getData();
+                    // alert(data)
+                    
+                }
+                    
+            </script>
+
+        </form>
+        
+    </body>
+</html>

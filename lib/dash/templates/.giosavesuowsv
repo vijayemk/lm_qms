@@ -1,0 +1,1701 @@
+<script>
+    {include file="templates/insert_sajax.tpl"}
+</script>
+{literal}
+    <script language="javascript">
+        function reload_page() {
+            setTimeout("location.reload(true);", 1500);
+        }
+    </script>
+
+{/literal}
+
+<form class="form-horizontal" action="{$smarty.server.REQUEST_URI}" role="form" name="default_dashboard" method="post">
+    <div class="vd_head-section clearfix">
+        <div class="vd_panel-header">
+            <ul class="breadcrumb">
+                <li><a href="index.php?module=dash&action=default_dashboard">Home</a> </li>
+                <li class="active">Dashboard</li>
+            </ul>
+            <div class="vd_panel-menu hidden-sm hidden-xs"
+                data-intro="<strong>Expand Control</strong><br/>To expand content page horizontally, vertically, or Both."
+                data-step=5 data-position="left">
+                <div data-action="remove-navbar" data-original-title="Remove Navigation Bar Toggle"
+                    data-toggle="tooltip" data-placement="bottom" class="remove-navbar-button menu"> <i
+                        class="fa fa-arrows-h"></i> </div>
+                <div data-action="remove-header" data-original-title="Remove Top Menu Toggle" data-toggle="tooltip"
+                    data-placement="bottom" class="remove-header-button menu"> <i class="fa fa-arrows-v"></i> </div>
+                <div data-action="fullscreen" data-original-title="Remove Navigation Bar and Top Menu Toggle"
+                    data-toggle="tooltip" data-placement="bottom" class="fullscreen-button menu"> <i
+                        class="glyphicon glyphicon-fullscreen"></i> </div>
+            </div>
+        </div>
+    </div>
+    <div class="vd_content-section clearfix">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tabs widget">
+                    <ul class="nav nav-tabs widget">
+                        <li class="active">
+                            <a data-toggle="tab" href="#sop_status-tab">
+                                <span class="menu-icon"><i class="fa fa-list"></i></span>
+                                DASHBOARD
+                                <span class="menu-active"><i class="fa fa-caret-up"></i></span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="sop_status-tab" class="tab-pane active">
+                            <div class="pd-20">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="panel widget">
+                                            <div class="panel-heading vd_bg-red">
+                                                <h3 class="panel-title"> <span class="menu-icon"> <i
+                                                            class="icon-pie"></i> </span> DMS </h3>
+                                                <div class="vd_panel-menu" style="display: flex;">
+                                                    <div data-action="refresh" data-original-title="Refresh"
+                                                        data-toggle="tooltip" data-placement="bottom"
+                                                        class=" menu entypo-icon smaller-font refresh-dms"> <i
+                                                            class="icon-cycle"></i> </div>
+                                                    <div style="margin-right: 5px;">
+                                                        <select class="width-100" style="padding: 2px;" id="dmsYear">
+                                                            <option value="{date('Y')}">{date('Y')}</option>
+                                                            <option value="{date('Y')-1}">{date('Y')-1}</option>
+                                                            <option value="{date('Y')-2}">{date('Y')-2}</option>
+                                                            <option value="{date('Y')-3}">{date('Y')-3}</option>
+                                                            <option value="{date('Y')-4}">{date('Y')-4}</option>
+                                                            <option value="{date('Y')-5}">{date('Y')-5}</option>
+                                                        </select>
+                                                    </div>
+                                                    <div>
+                                                        <select class="width-100" id="dmsPlantId" style="padding: 2px;">
+                                                            <option value="">All Plant Data</option>
+                                                            {foreach from=$plants item=item key=key}
+                                                                <option value="{$item.plant_id}"
+                                                                    {if $item.plant_id eq $userPlantId } selected {/if}>
+                                                                    {$item.short_name}</option>
+                                                            {/foreach}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <!-- vd_panel-menu -->
+                                            </div>
+                                            <div class="panel-body" style="display: block;">
+                                                <div class="col-md-7">
+                                                    <div class="panel widget">
+                                                        <div class="panel-body-list  table-responsive">
+                                                            <table
+                                                                class="table no-head-border table-striped table-bordered">
+                                                                <thead class="vd_bg-blue vd_white">
+                                                                    <tr>
+                                                                        <th style="text-align: center;">
+                                                                            <div class="checkbox-success"
+                                                                                style="text-align:center;">
+                                                                                <input type="checkbox"
+                                                                                    class="dms-check-all" value="1"
+                                                                                    id="checkbox-1" checked>
+                                                                                <label for="checkbox-1"
+                                                                                    style="margin-bottom: 0;"> All
+                                                                                </label>
+                                                                            </div>
+                                                                        </th>
+                                                                        <th style="text-align: center;">Business Object
+                                                                        </th>
+                                                                        <th style="text-align: center;">Total</th>
+                                                                        <th style="text-align: center;">Completed</th>
+                                                                        <th style="text-align: center;">Pending</th>
+                                                                        <th style="text-align: center;">Cancelled</th>
+                                                                        <th style="text-align: center;">Rejected</th>
+                                                                        <th style="text-align: center;">Action</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody id="dmsTable">
+                                                                    {$i = 1}
+                                                                    {foreach from=$dmsBusinessObjects item=item key=key }
+                                                                        <tr style="height: 45px;">
+                                                                            <td>
+                                                                                <div class="checkbox-success"
+                                                                                    style="text-align:center;">
+                                                                                    <input type="checkbox"
+                                                                                        class="dms-business-object"
+                                                                                        value="{$item.shortName}"
+                                                                                        id="checkbox-{$i++}" checked>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td
+                                                                                style="text-align: center; vertical-align:middle;">
+                                                                                {$item.shortName}</td>
+                                                                            <td style="text-align: center; vertical-align:middle;"
+                                                                                id="{strtolower($item.shortName)}Total">
+                                                                            </td>
+                                                                            <td style="text-align: center; vertical-align:middle;"
+                                                                                id="{strtolower($item.shortName)}Completed">
+                                                                                docCode                                                               </td>
+                                                                            <td style="text-align: center; vertical-align:middle;"
+                                                                                id="{strtolower($item.shortName)}Pending">
+                                                                            </td>
+                                                                            <td style="text-align: center; vertical-align:middle;"
+                                                                                id="{strtolower($item.shortName)}Cancelled">
+                                                                            </td>
+                                                                            <td style="text-align: center; vertical-align:middle;"
+                                                                                id="{strtolower($item.shortName)}Rejected">
+                                                                            </td>
+                                                                            <td style="width: 18%;">
+                                                                                <button
+                                                                                    class="btn vd_btn vd_bg-blue btn-xs trending-button"
+                                                                                    type="button"
+                                                                                    id="{strtolower($item.shortName)}Trending"
+                                                                                    data-business-object="{$item.shortName}"
+                                                                                    data-module="dms">Trending</button>
+                                                                                <button class="btn vd_btn vd_bg-blue btn-xs report-button"
+                                                                                    type="button"
+                                                                                    id="{strtolower($item.shortName)}Report" data-business-object="{$item.docGroup}">Report</button>                                                                                
+                                                                            </td>
+                                                                        </tr>
+                                                                    {/foreach}
+                                                                    <tr
+                                                                        style="font-size: 15px; font-weight: bold; color: black;">
+                                                                        <td colspan="2" style="text-align: center;">
+                                                                            Total
+                                                                        </td>
+                                                                        <td style="text-align: center; vertical-align:middle;"
+                                                                            class="totalDms"></td>
+                                                                        <td style="text-align: center; vertical-align:middle;"
+                                                                            class="completedDms"></td>
+                                                                        <td style="text-align: center; vertical-align:middle;"
+                                                                            class="pendingDms"></td>
+                                                                        <td style="text-align: center; vertical-align:middle;"
+                                                                            class="cancelledDms"></td>
+                                                                        <td style="text-align: center; vertical-align:middle; border-right: 1px solid #ddd;"
+                                                                            class="rejectedDms"></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-5">
+                                                    <div class="panel vd_transaction-widget light-widget widget"
+                                                        style="box-shadow:none;">
+                                                        <div class="panel-body">
+                                                            <!-- vd_panel-menu -->
+                                                            <h5 class="mgbt-xs-0 mgtp-0"><span
+                                                                    class="menu-icon append-icon"> <i
+                                                                        class="icon-pie"></i> </span> <strong
+                                                                    id="qmsYearTitle">Current
+                                                                    Year Data</strong></h5>
+                                                            <div id="pie-chart-dms" class="pie-chart"
+                                                                style="height: 350px; padding: 0px; position: relative;">
+                                                                <canvas class="flot-base" width="463" height="388"
+                                                                    style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 463px; height: 350px;"></canvas>
+                                                                <canvas class="flot-overlay" width="463" height="388"
+                                                                    style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 463px; height: 350px;"></canvas>
+                                                                <div class="legend">
+                                                                    <div
+                                                                        style="position: absolute; width: 55px; height: 138px; top: 5px; right: 5px; background-color: rgb(255, 255, 255); opacity: 0.85;">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="vd_info br">
+                                                                <h5 class="text-right font-semibold"><strong>TOTAL
+                                                                        DMS</strong></h5>
+                                                                <h3 class="text-right  vd_red totalDms"></h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="panel widget">
+                                            <div class="panel-heading vd_bg-red">
+                                                <h3 class="panel-title"> <span class="menu-icon"> <i
+                                                            class="icon-pie"></i> </span> QMS </h3>
+                                                <div class="vd_panel-menu" style="display: flex;">
+                                                    <div data-action="refresh" data-original-title="Refresh"
+                                                        data-toggle="tooltip" data-placement="bottom"
+                                                        class=" menu entypo-icon smaller-font refresh-qms"> <i
+                                                            class="icon-cycle"></i> </div>
+                                                    <div style="margin-right: 5px;">
+                                                        <select class="width-100" style="padding: 2px;" id="qmsYear">
+                                                            <option value="{date('Y')}">{date('Y')}</option>
+                                                            <option value="{date('Y')-1}">{date('Y')-1}</option>
+                                                            <option value="{date('Y')-2}">{date('Y')-2}</option>
+                                                            <option value="{date('Y')-3}">{date('Y')-3}</option>
+                                                            <option value="{date('Y')-4}">{date('Y')-4}</option>
+                                                            <option value="{date('Y')-5}">{date('Y')-5}</option>
+                                                        </select>
+                                                    </div>
+                                                    <div>
+                                                        <select class="width-100" style="padding: 2px;" id="qmsPlantId">
+                                                            <option value="">All Plant Data</option>
+                                                            {foreach from=$plants item=item key=key}
+                                                                <option value="{$item.plant_id}"
+                                                                    {if $item.plant_id eq $userPlantId } selected {/if}>
+                                                                    {$item.short_name}</option>
+                                                            {/foreach}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <!-- vd_panel-menu -->
+                                            </div>
+                                            <div class="panel-body" style="display: block;">
+                                                <div class="col-md-7">
+                                                    <div class="panel widget">
+                                                        <div class="panel-body-list  table-responsive">
+                                                            <table
+                                                                class="table no-head-border table-striped table-bordered">
+                                                                <thead class="vd_bg-blue vd_white">
+                                                                    <tr>
+                                                                        <th style="text-align: center;">
+                                                                            <div class="checkbox-success"
+                                                                                style="text-align:center;">
+                                                                                <input type="checkbox"
+                                                                                    class="qms-check-all" value="1"
+                                                                                    id="checkbox-2" checked>
+                                                                                <label for="checkbox-2"
+                                                                                    style="margin-bottom: 0;"> All
+                                                                                </label>
+                                                                            </div>
+                                                                        </th>
+                                                                        <th style="text-align: center;">Business Object
+                                                                        </th>
+                                                                        <th style="text-align: center;">Total</th>
+                                                                        <th style="text-align: center;">Completed</th>
+                                                                        <th style="text-align: center;">Pending</th>
+                                                                        <th style="text-align: center;">Cancelled</th>
+                                                                        <th style="text-align: center;">Rejected</th>
+                                                                        <th style="text-align: center;">Action</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody id="qmsTable">
+                                                                    {$i = 1}
+                                                                    {foreach from=$qmsBusinessObjects item=item key=key }
+                                                                        <tr style="height: 45px;">
+                                                                            <td>
+                                                                                <div class="checkbox-success"
+                                                                                    style="text-align:center;">
+                                                                                    <input type="checkbox"
+                                                                                        class="qms-business-object"
+                                                                                        value="{$item.shortName}"
+                                                                                        id="checkbox-{$i++}" checked>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td
+                                                                                style="text-align: center; vertical-align:middle;">
+                                                                                {$item.shortName}</td>
+                                                                            <td style="text-align: center; vertical-align:middle;"
+                                                                                id="{strtolower($item.shortName)}Total">
+                                                                            </td>
+                                                                            <td style="text-align: center; vertical-align:middle;"
+                                                                                id="{strtolower($item.shortName)}Completed">
+                                                                            </td>
+                                                                            <td style="text-align: center; vertical-align:middle;"
+                                                                                id="{strtolower($item.shortName)}Pending">
+                                                                            </td>
+                                                                            <td style="text-align: center; vertical-align:middle;"
+                                                                                id="{strtolower($item.shortName)}Cancelled">
+                                                                            </td>
+                                                                            <td style="text-align: center; vertical-align:middle;"
+                                                                                id="{strtolower($item.shortName)}Rejected">
+                                                                            </td>
+                                                                            <td style="width: 18%;">
+                                                                                <button
+                                                                                    class="btn vd_btn vd_bg-blue btn-xs trending-button"
+                                                                                    type="button"
+                                                                                    id="{strtolower($item.shortName)}Trending"
+                                                                                    data-business-object="{$item.shortName}"
+                                                                                    data-module="qms">Trending</button>
+                                                                                    <button class="btn vd_btn vd_bg-blue btn-xs report-button"
+                                                                                    type="button"
+                                                                                    id="{strtolower($item.shortName)}Report" data-business-object="{$item.docGroup}">Report</button>
+                                                                            </td>
+                                                                        </tr>
+                                                                    {/foreach}
+                                                                    <tr
+                                                                        style="font-size: 15px; font-weight: bold; color: black;">
+                                                                        <td colspan="2" style="text-align: center;">
+                                                                            Total
+                                                                        </td>
+                                                                        <td style="text-align: center; vertical-align:middle;"
+                                                                            class="totalQms"></td>
+                                                                        <td style="text-align: center; vertical-align:middle;"
+                                                                            class="completedQms"></td>
+                                                                        <td style="text-align: center; vertical-align:middle;"
+                                                                            class="pendingQms"></td>
+                                                                        <td style="text-align: center; vertical-align:middle;"
+                                                                            class="cancelledQms"></td>
+                                                                        <td style="text-align: center; vertical-align:middle; border-right: 1px solid #ddd;"
+                                                                            class="rejectedQms"></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-5">
+                                                    <div class="panel vd_transaction-widget light-widget widget"
+                                                        style="box-shadow:none;">
+                                                        <div class="panel-body">
+                                                            <!-- vd_panel-menu -->
+                                                            <h5 class="mgbt-xs-0 mgtp-0"><span
+                                                                    class="menu-icon append-icon"> <i
+                                                                        class="icon-pie"></i> </span> <strong
+                                                                    id="qmsYearTitle">Current
+                                                                    Year Data</strong></h5>
+                                                            <div id="pie-chart-qms" class="pie-chart"
+                                                                style="height: 350px; padding: 0px; position: relative;">
+                                                                <canvas class="flot-base" width="463" height="388"
+                                                                    style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 463px; height: 350px;"></canvas>
+                                                                <canvas class="flot-overlay" width="463" height="388"
+                                                                    style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 463px; height: 350px;"></canvas>
+                                                                <div class="legend">
+                                                                    <div
+                                                                        style="position: absolute; width: 55px; height: 138px; top: 5px; right: 5px; background-color: rgb(255, 255, 255); opacity: 0.85;">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="vd_info br">
+                                                                <h5 class="text-right font-semibold"><strong>TOTAL
+                                                                        QMS</strong></h5>
+                                                                <h3 class="text-right  vd_red totalQms"></h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- tabs-widget -->
+            </div>
+        </div>
+        <!-- .col-md-6 -->
+    </div>
+</form>
+
+
+{* Trending Modal  *}
+<div class="modal fade" id="trendingModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+    aria-labelledby="trendingModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">  
+            <div class="modal-header vd_bg-blue vd_white">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i
+                        class="fa fa-times"></i></button>
+                <h4 class="modal-title" id="edit_basic_details_ModalLabel">Trending  Chart</h4>
+            </div>          
+            <div class="modal-body" style="padding: 0;">
+                <div class="panel widget" style="margin-bottom: 0;">
+                    <div class="panel-heading vd_bg-white">                        
+                        <div class="vd_panel-menu" style="display: flex;">
+                            <div style="margin-right: 5px;">
+                                <select class="width-100" style="padding: 2px;" id="trendingChart">
+                                    <option value="line" selected>Line Chart</option>
+                                    <option value="bar">Bar Chart</option>
+                                    <option value="radar">Radar Chart</option>
+                                </select>
+                            </div>
+                            <div style="margin-right: 5px;">
+                                <select class="width-100" style="padding: 2px;" id="trendingBusinessObject">
+
+                                </select>
+                            </div>
+                            <div style="margin-right: 5px;">
+                                <select class="width-100" style="padding: 2px;" id="trendingYear1">
+                                    <option value="{date('Y')}">{date('Y')}</option>
+                                    <option value="{date('Y')-1}">{date('Y')-1}</option>
+                                    <option value="{date('Y')-2}">{date('Y')-2}</option>
+                                    <option value="{date('Y')-3}">{date('Y')-3}</option>
+                                    <option value="{date('Y')-4}">{date('Y')-4}</option>
+                                    <option value="{date('Y')-5}">{date('Y')-5}</option>
+                                </select>
+                            </div>
+                            <div style="margin-right: 5px;">
+                                <select class="width-100" style="padding: 2px;" id="trendingYear2">
+                                    <option value="{date('Y')-1}">{date('Y')-1}</option>
+                                    <option value="{date('Y')-2}">{date('Y')-2}</option>
+                                    <option value="{date('Y')-3}">{date('Y')-3}</option>
+                                    <option value="{date('Y')-4}">{date('Y')-4}</option>
+                                    <option value="{date('Y')-5}">{date('Y')-5}</option>
+                                </select>
+                            </div>
+                            <div>
+                                <select class="width-100" style="padding: 2px;" id="trendingPlantId">
+                                    <option value="">All Plant Data</option>
+                                    {foreach from=$plants item=item key=key}
+                                        <option value="{$item.plant_id}">
+                                            {$item.short_name}</option>
+                                    {/foreach}
+                                </select>
+                            </div>
+                        </div>
+                        <!-- vd_panel-menu -->
+
+
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="row mgbt-md-12">
+                                <input type="hidden" value="" id="doc_short_code">
+                                <div class="col-md-3">
+                                    <label class="control-label">{attribute_name module="dash" attribute="module"}</label>
+                                    <div class="controls">
+                                        <select class="module reset_filter search_ccm">
+                                            <option value="">All</option>
+                                            {foreach name=list item=item key=key from=$doc_groups}
+                                                <option value="{$item.id}">{$item.group}</option>
+                                            {/foreach}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="control-label">{attribute_name module="dash" attribute="sub_module"}</label>
+                                    <div class="controls">
+                                        <select class="sub_module reset_filter search_ccm">
+                                            <option value="">All</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="control-label">{attribute_name module="dash" attribute="status"}</label>
+                                    <div class="controls">
+                                        <select class="status reset_filter sub_module_filter search_ccm" id="status">
+                                            <option value="">All</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="control-label">{attribute_name module="dash" attribute="wf_status"}</label>
+                                    <div class="controls">
+                                        <select class="wf_status reset_filter sub_module_filter search_ccm" id="wf_status">
+                                            <option value="">All</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3" style="display: none;">
+                                        <label class="control-label">Published Status</label>
+                                        <div class="controls">
+                                            <select class="published_status reset_filter sub_module_filter search_ccm" id="published_status"   title="Select Valid SOP">
+                                                <option value="">All</option>
+                                                <option value="Cancelled">Cancelled</option>
+                                                <option value="Draft">Draft</option>
+                                                <option value="Dropped">Dropped</option>
+                                                <option value="Published and Active">Published and Active</option>
+                                                <option value="Published and Inactive">Published and Inactive</option>
+                                                <option value="SOP Expired">SOP Expired</option>
+                                                <option value="Transferred">Transferred</option>
+                                            </select>
+                                        </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="control-label">{attribute_name module="dash" attribute="company_name"}</label>
+                                    <div class="controls">
+                                        <select class="plant reset_filter sub_module_filter search_ccm">
+                                            <option value="">All</option>
+                                            {foreach name=list item=item key=key from=$plantlist}
+                                                <option value="{$item.plant_id}">{$item.plant_name}</option>
+                                            {/foreach}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="control-label"> {attribute_name module="dash" attribute="department"}</label>
+                                    <div class="controls">
+                                        <select class="dept reset_filter sub_module_filter search_ccm">
+                                            <option value="">All</option>
+                                            {foreach name=list item=item key=key from=$dept_list}
+                                                <option value="{$item.dropdwon_value}">{$item.drop_down_option}</option>
+                                            {/foreach}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="control-label"> {attribute_name module="dash" attribute="user"}</label>
+                                    <div class="controls">
+                                        <select class="created_by reset_filter sub_module_filter search_ccm"><option value="">All</option></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>         
+
+                        <h2 id="trendingTitle" style="margin-top: 10px; margin-bottom: 30px;"></h2>
+                        <canvas id="trending-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer background-login">
+                <button type="button" class="btn vd_btn vd_bg-grey" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{* MIS Report Modal  *}
+<div class="modal fade" id="misReport" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+    aria-labelledby="edit_basic_details_ModalLabel" aria-hidden="true">
+    <div class="modal-dialog width-90 height-100">
+        <div class="modal-content">
+            <div class="modal-header vd_bg-blue vd_white">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i
+                        class="fa fa-times"></i></button>
+                <h4 class="modal-title" id="edit_basic_details_ModalLabel">MIS  Report</h4>
+            </div>
+            <div class="modal-body pd-15">
+
+                <div class="form-group">
+                    <div class="row mgbt-md-12">
+                        <input type="hidden" value="" id="doc_short_code">
+                        <div class="col-md-3">
+                            <label class="control-label">{attribute_name module="dash" attribute="module"}</label>
+                            <div class="controls">
+                                <select class="module reset_filter search_ccm">
+                                    <option value="">All</option>
+                                    {foreach name=list item=item key=key from=$doc_groups}
+                                        <option value="{$item.id}">{$item.group}</option>
+                                    {/foreach}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label">{attribute_name module="dash" attribute="sub_module"}</label>
+                            <div class="controls">
+                                <select class="sub_module reset_filter search_ccm">
+                                    <option value="">All</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label">{attribute_name module="dash" attribute="status"}</label>
+                            <div class="controls">
+                                <select class="status reset_filter sub_module_filter search_ccm" id="status">
+                                    <option value="">All</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label">{attribute_name module="dash" attribute="wf_status"}</label>
+                            <div class="controls">
+                                <select class="wf_status reset_filter sub_module_filter search_ccm" id="wf_status">
+                                    <option value="">All</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3" style="display: none;">
+                                <label class="control-label">Published Status</label>
+                                <div class="controls">
+                                    <select class="published_status reset_filter sub_module_filter search_ccm" id="published_status"   title="Select Valid SOP">
+                                        <option value="">All</option>
+                                        <option value="Cancelled">Cancelled</option>
+                                        <option value="Draft">Draft</option>
+                                        <option value="Dropped">Dropped</option>
+                                        <option value="Published and Active">Published and Active</option>
+                                        <option value="Published and Inactive">Published and Inactive</option>
+                                        <option value="SOP Expired">SOP Expired</option>
+                                        <option value="Transferred">Transferred</option>
+                                    </select>
+                                </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label">{attribute_name module="dash" attribute="company_name"}</label>
+                            <div class="controls">
+                                <select class="plant reset_filter sub_module_filter search_ccm">
+                                    <option value="">All</option>
+                                    {foreach name=list item=item key=key from=$plantlist}
+                                        <option value="{$item.plant_id}">{$item.plant_name}</option>
+                                    {/foreach}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label"> {attribute_name module="dash" attribute="department"}</label>
+                            <div class="controls">
+                                <select class="dept reset_filter sub_module_filter search_ccm">
+                                    <option value="">All</option>
+                                    {foreach name=list item=item key=key from=$dept_list}
+                                        <option value="{$item.dropdwon_value}">{$item.drop_down_option}</option>
+                                    {/foreach}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label"> {attribute_name module="dash" attribute="user"}</label>
+                            <div class="controls">
+                                <select class="created_by reset_filter sub_module_filter search_ccm"><option value="">All</option></select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label class="control-label">{attribute_name module="ccm" attribute="start_date"} </label>
+                            <div class="controls">
+                                <input type=text class="required generate_datepicker date_changed start_date reset_filter sub_module_filter search_ccm" data-datepicker_max=0 data-date_changed="end_date"
+                                    data-datepicker=0>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label">{attribute_name module="ccm" attribute="end_date"} </label>
+                            <div class="controls">
+                                <input type=text class="required generate_datepicker end_date reset_filter sub_module_filter search_ccm" id="end_date"
+                                    data-datepicker=0>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <div class="form-actions-condensed row mgbt-xs-0 mgtp-0">
+                    <span class="total_result_area font-semibold pull-left" style="display: none;">(Found <span class="label label-danger result_count">0</span> <span class="result_label">Change Control</span>)</span>
+                        <button class="btn vd_bg-red vd_white model_refresh_button  pull-right" type="button"><span class="menu-icon"><i class="fa fa-fw fa-refresh"></i></span> Refresh</button>
+                        <button type="button" class="btn vd_btn vd_bg-grey" data-dismiss="modal"><i class="fa fa-fw fa-close"></i>Close</button>
+                    </div>
+                </div>
+                
+                <div class="panel-body result_area" style="display: none;">
+                    <table class="table table-bordered table-striped" id="search_output_table" width="100%" title="Search SOP" >
+                        <thead></thead>
+                        <tfoot></tfoot>
+                    </table>
+                </div>
+                <div class="panel-body audit_trail_result no_records" style="display: none;"> 
+                        <div class="alert alert-danger"> <span class="vd_alert-icon"><i class="fa fa-exclamation-circle vd_red"></i></span><strong>No Records Found!</strong></div>
+                </div> 
+            </div>
+            
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+
+        /* DMS PIE CHART */
+        var dmsPlantId = $('#dmsPlantId').val();
+        var dmsYear = $('#dmsYear').val();
+        var dmsAllBusinessObject = getDmsBusinessObjects();
+        var dmsBusinessObject = getDmsBusinessObjects();
+
+        dmsPieChart(dmsPlantId, dmsYear, dmsBusinessObject);
+
+        $('.dms-check-all').on('change', function() {
+            $('.dms-business-object').prop('checked', this.checked);
+            applyDmsFilterValues();
+            dmsPieChart(dmsPlantId, dmsYear, dmsBusinessObject);
+        });
+
+        $('.dms-business-object').on('change', function() {
+            let allChecked = $('.dms-business-object').length === $(
+                    '.dms-business-object:checked')
+                .length;
+            $('.dms-check-all').prop('checked', allChecked);
+            applyDmsFilterValues();
+            dmsPieChart(dmsPlantId, dmsYear, dmsBusinessObject);
+        });
+
+        $('#dmsYear').on('change', function() {
+            applyDmsFilterValues();
+            dmsPieChart(dmsPlantId, dmsYear, dmsBusinessObject);
+            $('#dmsYearTitle').text(dmsYear + ' Year Data');
+        });
+
+        $('#dmsPlantId').on('change', function() {
+            applyDmsFilterValues();
+            dmsPieChart(dmsPlantId, dmsYear, dmsBusinessObject);
+        });
+
+        $('.refresh-dms').click(function() {
+            $('#dmsYear').val('{date('Y')}');
+            $('#dmsPlantId').val('{$userPlantId}');
+            dmsPieChart('{$userPlantId}', '{date('Y')}', dmsBusinessObject);
+        });
+
+        function getDmsBusinessObjects() {
+            var checkedValues = [];
+            $('.dms-business-object:checked').each(function() {
+                checkedValues.push($(this).val());
+            });
+            return checkedValues;
+        }
+
+        function applyDmsFilterValues() {
+            dmsPlantId = $('#dmsPlantId').val();
+            dmsYear = $('#dmsYear').val();
+            dmsBusinessObject = getDmsBusinessObjects();
+            $.each(dmsAllBusinessObject, function(key, value) {
+                $('#' + value.toLowerCase() + 'Total').text(0).fadeOut().fadeIn();
+                $('#' + value.toLowerCase() + 'Completed').text(0).fadeOut().fadeIn();
+                $('#' + value.toLowerCase() + 'Pending').text(0).fadeOut().fadeIn();
+                $('#' + value.toLowerCase() + 'Cancelled').text(0).fadeOut().fadeIn();
+                $('#' + value.toLowerCase() + 'Rejected').text(0).fadeOut().fadeIn();
+                $('#' + value.toLowerCase() + 'Trending').fadeOut();
+                $('#' + value.toLowerCase() + 'Report').fadeOut();
+            });
+            if (dmsBusinessObject.length == 0) {
+                show_notification("e", 'topright',
+                    "Minimum One Business Object Is Required To Generate Chart!");
+                return false;
+            }
+            return true;
+        }
+
+
+
+
+
+
+        /* QMS PIE CHART*/
+        var qmsPlantId = $('#qmsPlantId').val();
+        var qmsYear = $('#qmsYear').val();
+        var qmsAllBusinessObject = getQmsBusinessObjects();
+        var qmsBusinessObject = getQmsBusinessObjects();
+
+        qmsPieChart(qmsPlantId, qmsYear, qmsBusinessObject);
+
+        $('.qms-check-all').on('change', function() {
+            $('.qms-business-object').prop('checked', this.checked);
+            applyQmsFilterValues();
+            qmsPieChart(qmsPlantId, qmsYear, qmsBusinessObject);
+        });
+
+        $('.qms-business-object').on('change', function() {
+            let allChecked = $('.qms-business-object').length === $(
+                    '.qms-business-object:checked')
+                .length;
+            $('.qms-check-all').prop('checked', allChecked);
+            applyQmsFilterValues();
+            qmsPieChart(qmsPlantId, qmsYear, qmsBusinessObject);
+        });
+
+        $('#qmsYear').on('change', function() {
+            applyQmsFilterValues();
+            qmsPieChart(qmsPlantId, qmsYear, qmsBusinessObject);
+            $('#qmsYearTitle').text(qmsYear + ' Year Data');
+        });
+
+        $('#qmsPlantId').on('change', function() {
+            applyQmsFilterValues();
+            qmsPieChart(qmsPlantId, qmsYear, qmsBusinessObject);
+        });
+
+        $('.refresh-qms').click(function() {
+            $('#qmsYear').val('{date('Y')}');
+            $('#qmsPlantId').val('{$userPlantId}');
+            qmsPieChart('{$userPlantId}', '{date('Y')}', qmsBusinessObject);
+        });
+
+        function getQmsBusinessObjects() {
+            var checkedValues = [];
+            $('.qms-business-object:checked').each(function() {
+                checkedValues.push($(this).val());
+            });
+            return checkedValues;
+        }
+
+        function applyQmsFilterValues() {
+            qmsPlantId = $('#qmsPlantId').val();
+            qmsYear = $('#qmsYear').val();
+            qmsBusinessObject = getQmsBusinessObjects();
+            $.each(qmsAllBusinessObject, function(key, value) {
+                $('#' + value.toLowerCase() + 'Total').text(0).fadeOut().fadeIn();
+                $('#' + value.toLowerCase() + 'Completed').text(0).fadeOut().fadeIn();
+                $('#' + value.toLowerCase() + 'Pending').text(0).fadeOut().fadeIn();
+                $('#' + value.toLowerCase() + 'Cancelled').text(0).fadeOut().fadeIn();
+                $('#' + value.toLowerCase() + 'Rejected').text(0).fadeOut().fadeIn();
+                $('#' + value.toLowerCase() + 'Trending').fadeOut();
+                $('#' + value.toLowerCase() + 'Report').fadeOut();
+            });
+            if (qmsBusinessObject.length == 0) {
+                show_notification("e", 'topright',
+                    "Minimum One Business Object Is Required To Generate Chart!");
+                return false;
+            }
+            return true;
+        }
+
+
+
+
+
+
+
+        /* TRENDING */
+        $('.trending-button').click(function() {
+            let businessObject = $(this).data('business-object');
+            let modules = $(this).data('module');
+            var option = '';
+            if (modules == 'dms') {
+                let businessObjects = {json_encode($dmsBusinessObjects)};
+                $.each(businessObjects, function(index, value) {
+                    option += `<option value="` + value.shortName + `">` + value.shortName +
+                        `</option>`
+                });
+                $('#trendingYear1').val($('#dmsYear').val());
+                $('#trendingPlantId').val($('#dmsPlantId').val());
+            } else {
+                let businessObjects = {json_encode($qmsBusinessObjects)};
+                $.each(businessObjects, function(index, value) {
+                    option += `<option value="` + value.shortName + `">` + value.shortName +
+                        `</option>`
+                });
+                $('#trendingYear1').val($('#qmsYear').val());
+                $('#trendingPlantId').val($('#qmsPlantId').val());
+            }
+            $('#trendingBusinessObject').html(option);
+            $('#trendingBusinessObject').val(businessObject);
+            if ($("#" + businessObject.toLowerCase() + "Total").text() == '0') {
+                show_notification("e", 'topright', "Data not available to generate analytics!");
+                return false;
+            } else {
+
+                $('#trendingModal').modal('show');
+                trendingLineChart(businessObject, $('#trendingYear1').val(), $(
+                        '#trendingYear2').val(), $('#trendingPlantId').val(), $('#trendingChart')
+                    .val());
+            }
+        });
+
+        $('#trendingChart').on('change', function() {
+            trendingLineChart($('#trendingBusinessObject').val(), $('#trendingYear1').val(), $(
+                '#trendingYear2').val(), $('#trendingPlantId').val(), $(this).val());
+        });
+
+        $('#trendingBusinessObject').on('change', function() {
+            trendingLineChart($(this).val(), $('#trendingYear1').val(), $(
+                '#trendingYear2').val(), $('#trendingPlantId').val(), $('#trendingChart').val());
+        });
+
+        $('#trendingYear1').on('change', function() {
+            trendingLineChart($('#trendingBusinessObject').val(), $(this).val(), $(
+                '#trendingYear2').val(), $('#trendingPlantId').val(), $('#trendingChart').val());
+        });
+
+        $('#trendingYear2').on('change', function() {
+            trendingLineChart($('#trendingBusinessObject').val(), $('#trendingYear1').val(), $(this)
+                .val(), $('#trendingPlantId').val(), $('#trendingChart').val());
+        });
+
+        $('#trendingPlantId').on('change', function() {
+            trendingLineChart($('#trendingBusinessObject').val(), $('#trendingYear1').val(), $(
+                '#trendingYear2').val(), $(this).val(), $('#trendingChart').val());
+        });
+
+        var ctx = document.getElementById('trending-chart').getContext('2d');
+
+        var trendingChartData = {
+            labels: ["Total",
+                "Completed",
+                "Pending",
+                "Cancelled",
+                "Rejected"
+            ],
+            datasets: [{
+                    label: '',
+                    data: [0, 0, 0, 0, 0],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                },
+                {
+                    label: '',
+                    data: [0, 0, 0, 0, 0],
+                    backgroundColor: 'rgba(175, 12, 12, 0.2)',
+                    borderColor: 'rgba(175, 12, 12, 1)',
+                }
+            ]
+        };
+
+        var trendingChartOptions = {
+            responsive: true,
+            scale: {
+                ticks: {
+                    beginAtZero: true
+                }
+            }
+        };
+
+        var trendingChart = new Chart(ctx, {
+            type: 'line',
+            data: trendingChartData,
+            options: trendingChartOptions
+        });
+
+        function trendingLineChart(trendingBusinessObject, trendingYear1, trendingYear2, trendingPlantId,
+            trendingChartType) {
+
+            $('#trendingTitle').fadeOut().fadeIn().text(trendingBusinessObject + " Trending Analytics of " +
+                trendingYear1 + " and " + trendingYear2);
+
+            x_trendingLineChart(trendingBusinessObject, trendingYear1, trendingYear2, trendingPlantId, function(
+                result) {
+
+                trendingChart.destroy();
+
+                trendingChartData = {
+                    labels: ["Total",
+                        "Completed",
+                        "Pending",
+                        "Cancelled",
+                        "Rejected"
+                    ],
+                    datasets: [{
+                            label: trendingYear1,
+                            data: [result[0].total, result[0].completed, result[0]
+                                .pending, result[0].cancelled, result[0]
+                                .rejected
+                            ],
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: trendingYear2,
+                            data: [result[1].total, result[1].completed, result[1]
+                                .pending, result[1].cancelled, result[1]
+                                .rejected
+                            ],
+                            backgroundColor: 'rgba(175, 12, 12, 0.2)',
+                            borderColor: 'rgba(175, 12, 12, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                };
+
+
+
+                trendingChart = new Chart(ctx, {
+                    type: trendingChartType,
+                    data: trendingChartData,
+                    options: trendingChartOptions
+                });
+
+            });
+        }
+    });
+
+
+    function labelFormatter(label, series) {
+        return "<div style='font-size:8pt; font-weight:bold; text-align:center; padding:2px; color:white;'>" +
+            label + "<br/>" + Math.round(series.percent) + "%</div>";
+    }
+
+    function dmsPieChart(dmsPlantId, dmsYear, dmsBusinessObject) {
+
+        x_dmsPieChart(dmsPlantId, dmsYear, dmsBusinessObject, function(result) {
+            var total = 0;
+            var completed = 0;
+            var pending = 0;
+            var cancelled = 0;
+            var rejected = 0;
+
+            $.each(result, function(key, value) {
+
+                var totalKey = key + 'Total';
+                var completedKey = key + 'Completed';
+                var pendingKey = key + 'Pending';
+                var cancelledKey = key + 'Cancelled';
+                var RejectedKey = key + 'Rejected';
+
+                $('#' + key + 'Total').text(value[totalKey]);
+                $('#' + key + 'Completed').text(value[completedKey]);
+                $('#' + key + 'Pending').text(value[pendingKey]);
+                $('#' + key + 'Cancelled').text(value[cancelledKey]);
+                $('#' + key + 'Rejected').text(value[RejectedKey]);
+                $('#' + key + 'Trending').fadeIn();
+                $('#' + key + 'Report').fadeIn();
+
+                total += value[totalKey];
+                completed += value[completedKey];
+                pending += value[pendingKey];
+                cancelled += value[cancelledKey];
+                rejected += value[RejectedKey];
+            });
+
+            $('.totalDms').text(total);
+            $('.completedDms').text(completed);
+            $('.pendingDms').text(pending);
+            $('.cancelledDms').text(cancelled);
+            $('.rejectedDms').text(rejected);
+
+
+            var piePlaceholderDms = $("#pie-chart-dms");
+            var pieDataDms = [];
+            pieDataDms[0] = {
+                label: "Completed",
+                data: completed
+            }
+            pieDataDms[1] = {
+                label: "Pending",
+                data: pending
+            }
+            pieDataDms[2] = {
+                label: "Cancelled",
+                data: cancelled
+            }
+            pieDataDms[3] = {
+                label: "Rejected",
+                data: rejected
+            }
+            $.plot(piePlaceholderDms, pieDataDms, {
+                series: {
+                    pie: {
+                        show: true,
+                        label: {
+                            show: true,
+                            radius: .5,
+                            formatter: labelFormatter,
+                            background: {
+                                opacity: 0
+                            }
+                        },
+                    }
+                },
+                grid: {
+                    hoverable: true,
+                    clickable: true
+                },
+                colors: ["#52D793", "#56A2CF", "##FFA500", "#FF0000"]
+            });
+
+            piePlaceholderDms.unbind('plotclick');
+            piePlaceholderDms.bind("plotclick", function(event, pos, obj) {
+                if (!obj) {
+                    return;
+                }
+                percent = parseFloat(obj.series.percent).toFixed(2);
+                show_notification("i", 'topright', obj.series.label + ": " + percent + "%");
+            });
+        });
+    }
+
+    function qmsPieChart(qmsPlantId, qmsYear, qmsBusinessObject) {
+
+        x_qmsPieChart(qmsPlantId, qmsYear, qmsBusinessObject, function(result) {
+            var total = 0;
+            var completed = 0;
+            var pending = 0;
+            var cancelled = 0;
+            var rejected = 0;
+
+            $.each(result, function(key, value) {
+
+                var totalKey = key + 'Total';
+                var completedKey = key + 'Completed';
+                var pendingKey = key + 'Pending';
+                var cancelledKey = key + 'Cancelled';
+                var RejectedKey = key + 'Rejected';
+
+                $('#' + key + 'Total').text(value[totalKey]);
+                $('#' + key + 'Completed').text(value[completedKey]);
+                $('#' + key + 'Pending').text(value[pendingKey]);
+                $('#' + key + 'Cancelled').text(value[cancelledKey]);
+                $('#' + key + 'Rejected').text(value[RejectedKey]);
+                $('#' + key + 'Trending').fadeIn();
+                $('#' + key + 'Report').fadeIn();
+
+                total += value[totalKey];
+                completed += value[completedKey];
+                pending += value[pendingKey];
+                cancelled += value[cancelledKey];
+                rejected += value[RejectedKey];
+            });
+
+            $('.totalQms').text(total);
+            $('.completedQms').text(completed);
+            $('.pendingQms').text(pending);
+            $('.cancelledQms').text(cancelled);
+            $('.rejectedQms').text(rejected);
+
+
+            var piePlaceholderQms = $("#pie-chart-qms");
+            var pieDataQms = [];
+            pieDataQms[0] = {
+                label: "Completed",
+                data: completed
+            }
+            pieDataQms[1] = {
+                label: "Pending",
+                data: pending
+            }
+            pieDataQms[2] = {
+                label: "Cancelled",
+                data: cancelled
+            }
+            pieDataQms[3] = {
+                label: "Rejected",
+                data: rejected
+            }
+            $.plot(piePlaceholderQms, pieDataQms, {
+                series: {
+                    pie: {
+                        show: true,
+                        label: {
+                            show: true,
+                            radius: .5,
+                            formatter: labelFormatter,
+                            background: {
+                                opacity: 0
+                            }
+                        },
+                    }
+                },
+                grid: {
+                    hoverable: true,
+                    clickable: true
+                },
+                colors: ["#52D793", "#56A2CF", "##FFA500", "#FF0000"]
+            });
+
+            piePlaceholderQms.unbind('plotclick');
+            piePlaceholderQms.bind("plotclick", function(event, pos, obj) {
+                if (!obj) {
+                    return;
+                }
+                percent = parseFloat(obj.series.percent).toFixed(2);
+                show_notification("i", 'topright', obj.series.label + ": " + percent + "%");
+            });
+        });
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+    
+        $('.report-button').click(function(){
+            let businessObject = $(this).data('business-object');console.log(businessObject);
+            x_getDocListByDocGroupId(businessObject, function (result) {
+                ajax_respone_handler_set_dropdown(
+                    result,
+                    '.sub_module',
+                    '',
+                    [],
+                    'All'
+                );
+            });
+            $(".module").val(businessObject);
+            $('#misReport').modal('show');
+        });
+
+        $('.model_refresh_button').on('click', function() {
+            $('.reset_filter').val('');
+            $('.total_result_area').hide();
+            clearFilterTableData();
+        });
+
+        $(".plant").change(function () {
+            doc_short_code_val = $("#doc_short_code").val();
+            get_dept_list(
+                $(this).val(),
+                '.dept',
+                '',
+                '',
+                'All'
+            );
+            getFilterTableData(doc_short_code_val);
+        });
+
+        $(".dept").change(function (e) {
+            doc_short_code_val = $("#doc_short_code").val();
+            get_dept_users(
+                $(e.target).val().split("-")[1],
+                '.created_by',
+                '',
+                '',
+                'All'
+            );
+            getFilterTableData(doc_short_code_val);
+
+        });
+
+        $(".module").change(function () {
+            var selectedValue = $(this).val();
+            $('.sub_module_filter').val('');
+            x_getDocListByDocGroupId(selectedValue, function (result) {
+                ajax_respone_handler_set_dropdown(
+                    result,
+                    '.sub_module',
+                    '',
+                    [],
+                    'All'
+                );
+            });
+        });
+
+        $(".created_by").change(function () {
+            doc_short_code_val = $("#doc_short_code").val();
+            getFilterTableData(doc_short_code_val);
+        });
+
+        $(".sub_module").change(function () {
+            var selectedValue = $(this).val();
+            $('.sub_module_filter').val('');
+            x_getLmDocCode(selectedValue, function (doc_short_code) {
+                $("#doc_short_code").val(doc_short_code);
+                x_getStatusByDocId(doc_short_code,"status", function (result1) {
+                    ajax_respone_handler_set_dropdown(
+                        result1,
+                        '.status',
+                        '',
+                        [],
+                        'All'
+                    );
+                });
+                if(doc_short_code == 'LM-DOC-3'){
+                    $('.wf_status').parent().parent().hide();
+                    $('.status').parent().parent().hide();
+                    $('.published_status').parent().parent().show();
+                } else {
+                    $('.wf_status').parent().parent().show();
+                    $('.status').parent().parent().show();
+                    $('.published_status').parent().parent().hide();
+                    x_getStatusByDocId(doc_short_code,"wf_status", function (result2) {
+                                                    
+                        ajax_respone_handler_set_dropdown(
+                            result2,
+                            '.wf_status',
+                            '',
+                            [],
+                            'All'
+                        );
+                    });
+                }
+                clearFilterTableData()
+                getFilterTableData(doc_short_code);
+            });
+        });
+        
+        $(".status").change(function () {
+            doc_short_code_val = $("#doc_short_code").val();
+            getFilterTableData(doc_short_code_val);
+        });
+
+        $(".published_status").change(function () {
+            doc_short_code_val = $("#doc_short_code").val();
+            getFilterTableData(doc_short_code_val);
+        });
+
+        $(".wf_status").change(function () {
+            doc_short_code_val = $("#doc_short_code").val();
+            getFilterTableData(doc_short_code_val);
+        });
+
+        $(".start_date").change(function () {
+            doc_short_code_val = $("#doc_short_code").val();
+            getFilterTableData(doc_short_code_val);
+        });
+
+        $(".end_date").change(function () {
+            doc_short_code_val = $("#doc_short_code").val();
+            getFilterTableData(doc_short_code_val);
+        });
+    });
+
+
+    function getFilterTableData(doc_short_code){
+        var params = {
+            dept: $(".dept").val().split("-")[1],
+            created_by: $(".created_by").val(),
+            module: $(".module").val(),
+            sub_module: $(".sub_module").val(),
+            start_date: $(".start_date").val(),
+            end_date: $(".end_date").val(),
+            plant: $(".plant").val(),
+            wf_status: $(".wf_status").val(),
+            published_status: $(".published_status").val(),
+            status: $("#status").val(),
+        };
+        lm_dom.append_search_icon(".search_ccm");
+        var selectedValue = JSON.stringify(params);
+        var dataSet = [];
+        count = 0;
+        console.log(selectedValue);
+        console.log(doc_short_code);
+        
+        x_dashboardFilterData(selectedValue,doc_short_code, function (result) {
+            console.log(result);
+            
+            if(doc_short_code == 'LM-DOC-11'){
+                var columns = [
+                    { title: "S.No" },
+                    { title: "CC No" },
+                    { title: "Company Name" },
+                    { title: "Department" },
+                    { title: "Initiator" },
+                    { title: "Classification" },
+                    { title: "Target Date" },
+                    { title: "Closed-out Date" },
+                    { title: "Completed Date" },
+                    { title: "Approval Status" },
+                    { title: "Workflow Status" },
+                    { title: "Status" }
+                ];
+                for (var y in result) {
+                    var result_array = result[y];
+                    count = count + 1;
+                    dataSet.push([
+                        count,
+                        result_array.doc_link,
+                        result_array.plant_name,
+                        result_array.cc_department_name,
+                        result_array.created_by_name,
+                        result_array.classification_name,
+                        result_array.target_date,
+                        result_array.close_out_date,
+                        result_array.completed_date,
+                        result_array.approval_status,
+                        result_array.wf_status,
+                        result_array.status
+                    ]);
+                }
+                $('.result_count').html(start);
+                $('.result_label').html('Change Controls');
+                $('.total_result_area').show();
+                $('.result_area').show();
+                generateDataTable("search_output_table",columns,dataSet);
+            } else if (doc_short_code == 'LM-DOC-12') {
+
+                var columns = [
+                    { title: "Sl.no" },
+                    { title: "CAPA No." },
+                    { title: "Company Name" },
+                    { title: "Department" },
+                    { title: "Created By" },
+                    { title: "Target Date" },
+                    { title: "Close-out Date" },
+                    { title: "Completed Date" },
+                    { title: "Approval Status" },
+                    { title: "Workflow Status" },
+                    { title: "Status" }
+                ];
+                for (var y in result) {
+                    var result_array = result[y];
+                    count = count + 1;
+                    dataSet.push([
+                        count,
+                        result_array.doc_link,
+                        result_array.plant_name,
+                        result_array.capa_department_name,
+                        result_array.created_by_name,
+                        result_array.target_date,
+                        result_array.close_out_date,
+                        result_array.completed_date,
+                        result_array.approval_status,
+                        result_array.wf_status,
+                        result_array.status
+                    ]);
+                }
+                $('.result_count').html(start);
+                $('.result_label').html('CAPA');
+                $('.total_result_area').show();
+                $('.result_area').show();
+                generateDataTable("search_output_table",columns,dataSet);
+            } else if (doc_short_code == 'LM-DOC-6') {
+                
+                var columns = [
+                    { title: "Sl.no" },
+                    { title: "Audit Tracking No." },
+                    { title: "Organization Name" },
+                    { title: "Plant Name" },
+                    { title: "Vendor Approval Status" },
+                    { title: "Score" },
+                    { title: "Initiator" },
+                    { title: "Company Name" },
+                    { title: "Department" },
+                    { title: "Approval Status" },
+                    { title: "Workflow Status" },
+                    { title: "Status" }
+                ];
+                for (var y in result) {
+                    var result_array = result[y];
+                    count = count + 1;
+                    dataSet.push([
+                        count,
+                        result_array.doc_link,
+                        result_array.vendor_org_name,
+                        result_array.vendor_plant_name,
+                        result_array.vendor_status,
+                        result_array.final_score,
+                        result_array.created_by_name,
+                        result_array.created_by_plant_name,
+                        result_array.created_by_dept_name,
+                        result_array.approval_status,
+                        result_array.wf_status,
+                        result_array.status
+                    ]);
+                }
+                $('.result_count').html(start);
+                $('.result_label').html('VMS');
+                $('.total_result_area').show();
+                $('.result_area').show();
+                generateDataTable("search_output_table",columns,dataSet);
+            } else if (doc_short_code == 'LM-DOC-7') {
+
+                var columns = [
+                    { title: "Sl.no" },
+                    { title: "Audit No." },
+                    { title: "Plant Name" },
+                    { title: "Department" },
+                    { title: "Initiator" },
+                    { title: "Type" },
+                    { title: "Sub Type" },
+                    { title: "Audit Date (From)" },
+                    { title: "Audit Date (To)" },
+                    { title: "Audit Lead" },
+                    { title: "Status" },
+                    { title: "Workflow Status" }
+                ];
+                for (var y in result) {
+                    var result_array = result[y];
+                    count = count + 1;
+                    dataSet.push([
+                        count,
+                        result_array.doc_link,
+                        result_array.created_by_plant_name,
+                        result_array.created_by_dept_name,
+                        result_array.created_by_name,
+                        result_array.audit_type_name,
+                        result_array.audit_sub_type_name,
+                        result_array.from_date,
+                        result_array.to_date,
+                        result_array.audit_lead_name,
+                        result_array.status,
+                        result_array.wf_status
+                    ]);
+                }
+                $('.result_count').html(start);
+                $('.result_label').html('Audits');
+                $('.total_result_area').show();
+                $('.result_area').show();
+                generateDataTable("search_output_table",columns,dataSet);
+            } else if (doc_short_code == 'LM-DOC-5') {
+
+                var columns = [
+                    { title: "Sl.no" },
+                    { title: "Deviation No." },
+                    { title: "Company Name" },
+                    { title: "Department" },
+                    { title: "Initiator" },
+                    { title: "Classification" },
+                    { title: "Date of Occurrence" },
+                    { title: "Date of Discovery" },
+                    { title: "Reporting Date" },
+                    { title: "Target Date" },
+                    { title: "Close-out Date" },
+                    { title: "Completed Date" },
+                    { title: "Approval Status" },
+                    { title: "Work Flow Status" },
+                    { title: "Status" }
+                ];
+                for (var y in result) {
+                    var result_array = result[y];
+                    count = count + 1;
+                    dataSet.push([
+                        count,
+                        result_array.doc_link,
+                        result_array.plant_name,
+                        result_array.dm_department_name,
+                        result_array.created_by_name,
+                        result_array.classification_name,
+                        result_array.date_of_occurrence,
+                        result_array.date_of_discovery,
+                        result_array.reporting_date,
+                        result_array.target_date,
+                        result_array.close_out_date,
+                        result_array.completed_date,
+                        result_array.approval_status,
+                        result_array.wf_status,
+                        result_array.status
+                    ]);
+                }
+                $('.result_count').html(start);
+                $('.result_label').html('Deviations');
+                $('.total_result_area').show();
+                $('.result_area').show();
+                generateDataTable("search_output_table",columns,dataSet);
+            } else if (doc_short_code == 'LM-DOC-3') {
+                                    
+                var columns = [
+                    { title: "Sl.no" },
+                    { title: "SOP No" },
+                    { title: "SOP Type" },
+                    { title: "SOP Name" },
+                    { title: "Revision" },
+                    { title: "Supersedes" },
+                    { title: "Effective Date" },
+                    { title: "Expiry Date" },
+                    { title: "Is Latest Revision" },
+                    { title: "Published Status" }
+                ];
+                for (var y in result) {
+                    var result_array = result[y];
+                    count = count + 1;
+                    dataSet.push([
+                        count,
+                        result_array.sop_no,
+                        result_array.sop_type,
+                        result_array.sop_name,
+                        result_array.revision,
+                        result_array.supersedes,
+                        result_array.effective_date,
+                        result_array.expiry_date,
+                        result_array.is_latest_revision,
+                        result_array.status
+                    ]);
+                }
+                $('.result_count').html(start);
+                $('.result_label').html('SOPs');
+                $('.total_result_area').show();
+                $('.result_area').show();
+                generateDataTable("search_output_table",columns,dataSet);
+            } else if (doc_short_code == 'LM-DOC-8') {
+
+                // var columns = [
+                //     { title: "S.No" },
+                //     { title: "Complaint No" },
+                //     { title: "Company Name" },
+                //     { title: "Department" },
+                //     { title: "Initiator" },
+                //     { title: "Classification" },
+                //     { title: "Target Date" },
+                //     { title: "Closed-out Date" },
+                //     { title: "Approval Status" },
+                //     { title: "Workflow Status" },
+                //     { title: "Status" }
+                // ];
+                //     for (var y in result) {
+                //         var result_array = result[y];
+                //         count = count + 1;
+                //         dataSet.push([
+                //         count,
+                //         result_array.doc_link,
+                //         result_array.plant_name,
+                //         result_array.cm_department_name,
+                //         result_array.created_by_name,
+                //         result_array.classification_name,
+                //         result_array.target_date,
+                //         result_array.close_out_date,
+                //         result_array.approval_status,
+                //         result_array.wf_status,
+                //         result_array.status
+                //     ]);
+                // }
+                // $('.result_count').html(start);
+                // $('.result_label').html('Complaints');
+                // $('.total_result_area').show();
+                // $('.result_area').show();
+                // generateDataTable("search_output_table",columns,dataSet);
+
+            }
+        });
+            
+    }
+    function generateDataTable(tableName, columns, dataSet) {
+
+        clearFilterTable(tableName);
+
+        var theadHtml = '<tr>';
+        var tfootHtml = '<tr>';
+        columns.forEach(function(column) {
+            theadHtml += '<th>' + column.title + '</th>';
+            tfootHtml += '<th><input type="text" placeholder="Search ' + column.title + '" /></th>';
+        });
+        theadHtml += '</tr>';
+        tfootHtml += '</tr>';
+        
+        $('#' + tableName + ' thead').html(theadHtml);
+        $('#' + tableName + ' tfoot').html(tfootHtml);
+        
+        $('#' + tableName).dataTable({
+            destroy: true,
+            data: dataSet,
+            columns: columns,
+            pagingType: "full_numbers",
+            mark: true,
+            dom: 'Bfrtip',
+            lengthMenu: [
+                [10, 25, 50, -1],
+                ['10 rows', '25 rows', '50 rows', 'Show all']
+            ],
+            buttons: [
+                'pageLength',
+                {
+                    extend: 'pdfHtml5',
+                    orientation: 'landscape',
+                    pageSize: 'A4',
+                    exportOptions: {
+                        columns: ':visible'
+                    },
+                    download: 'open',
+                    message: 'SOP List',
+                },
+                {
+                    extend: 'excel',
+                    exportOptions: {
+                        columns: ':visible'
+                    },
+                },
+                {
+                    extend: 'csv',
+                    exportOptions: {
+                        columns: ':visible',
+                    },
+                },
+                {
+                    extend: 'copy',
+                    exportOptions: {
+                        columns: ':visible'
+                    },
+                },
+                {
+                    extend: 'print',
+                    exportOptions: {
+                        columns: ':visible'
+                    },
+                    message: 'SOP List',
+                },
+                {
+                    extend: 'colvis',
+                    postfixButtons: ['colvisRestore']
+                }
+            ],
+            initComplete: function () {
+                this.api().columns().every(function () {
+                    var column = this;
+                    var input = $(column.footer()).find('input');
+                    input.on('keyup change', function () {
+                        column.search($(this).val()).draw();
+                    });
+                });
+            }
+        });
+    }
+    function clearFilterTable(tab_name) {
+        var table_obj=document.getElementById(tab_name);
+        for (i=table_obj.rows.length;i>1;i--) {
+            var row_ind=table_obj.rows[1].rowIndex
+            table_obj.deleteRow(row_ind)
+        }
+    }
+    function clearFilterTableData(){
+        
+        $('.result_area').empty();
+        var tableHTML = `
+            <table class="table table-bordered table-striped" id="search_output_table" width="100%" title="Search SOP">
+                <thead>
+                </thead>
+                <tfoot>
+                </tfoot>
+            </table>
+        `;
+        $('.result_area').html(tableHTML);
+    }
+
+    </script>

@@ -1,0 +1,227 @@
+<link rel="stylesheet" href="plugins/dataTables/DataTables_Export/buttons.dataTables.min.css">
+<link rel="stylesheet" href="plugins/dataTables/DataTables_Export/dataTables.bootstrap.min.css">
+<link rel="stylesheet" href="plugins/dataTables/DataTables_Export/datatables.mark.min.css">
+
+<div class="vd_head-section clearfix">
+    <div class="vd_panel-header">
+        <ul class="breadcrumb">
+            <li><a href="index.php?module=dash&action=default_dashboard">Home</a> </li>
+            <li class="active">Administration </li>
+            <li class="active">Setings </li>
+            <li class="active">SOP Data </li>
+            <li class="active">Extend Settings</li>
+        </ul>
+        <div class="vd_panel-menu hidden-sm hidden-xs" data-intro="<strong>Expand Control</strong><br/>To expand content page horizontally, vertically, or Both. If you just need one button just simply remove the other button code." data-step=5  data-position="left">
+            <div data-action="remove-navbar" data-original-title="Remove Navigation Bar Toggle" data-toggle="tooltip" data-placement="bottom" class="remove-navbar-button menu"> <i class="fa fa-arrows-h"></i> </div>
+            <div data-action="remove-header" data-original-title="Remove Top Menu Toggle" data-toggle="tooltip" data-placement="bottom" class="remove-header-button menu"> <i class="fa fa-arrows-v"></i> </div>
+            <div data-action="fullscreen" data-original-title="Remove Navigation Bar and Top Menu Toggle" data-toggle="tooltip" data-placement="bottom" class="fullscreen-button menu"> <i class="glyphicon glyphicon-fullscreen"></i> </div>
+        </div>
+    </div>
+</div>
+<div class="panel widget">
+    <div class="panel-body">
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading vd_bg-dark-green">
+                    <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"> Extend Setting </a> </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in">
+                    <div class="vd_content-section clearfix">
+                        <div class="panel widget light-widget">
+                            <div class="panel-body">
+                                <h2 class="mgbt-xs-20">Extend Settings Form</h2>
+                                <form name="extend_days_form" method="post" action="{$smarty.server.REQUEST_URI}" class="form-horizontal" role="form" id="extend_days_form" autocomplete="off">
+                                        <div class="alert alert-danger vd_hidden">
+                                              <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="icon-cross"></i></button>
+                                              <span class="vd_alert-icon"><i class="fa fa-exclamation-circle vd_red"></i></span><strong>Oh snap!</strong> Change a few things up and try submitting again.
+                                        </div>
+                                        <div class="alert alert-success vd_hidden">
+                                              <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="icon-cross"></i></button>
+                                              <span class="vd_alert-icon"><i class="fa fa-check-circle vd_green"></i></span><strong>Well done!</strong>. 
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label class="control-label  col-sm-2">Current Setting <span class="vd_red">*</span></label>
+                                                <div id="first-name-input-wrapper"  class="controls col-sm-6">
+                                                    <input type="text" class="width-60 required" name="old_extend_days" value="{$sop_extend_days}" readonly>
+                                                    <p style="color: red">Note: Extend option will get opened before {$sop_extend_days} days</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label class="control-label  col-sm-2">Edit to change<span class="vd_red">*</span></label>
+                                                <div id="first-name-input-wrapper"  class="controls col-sm-6">
+                                                    <select class="width-60" name="new_extend_days" id="new_extend_days" title="Select Days" required>
+                                                        {foreach name=list item=item key=key from=$days_range}
+                                                            <option value="{$item}"{if $item eq $sop_extend_days}selected{/if}>{$item}</option>
+                                                        {/foreach}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label class="control-label  col-sm-2">{attribute_name module="admin" attribute="reason_for_change"} <span class="vd_red">*</span></label>
+                                                <div id="first-name-input-wrapper"  class="controls col-sm-6">
+                                                    <textarea placeholder="Min 5 - Max 1000" rows="2" class="width-60 required" name="extend_days_reason_for_change" id="extend_days_reason_for_change" maxlength="1000" required title="Enter Valid Reason for Change" ></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="vd_login-error" class="alert alert-danger hidden"><i class="fa fa-exclamation-circle fa-fw"></i> Please fill the necessary field </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-2"></div>
+                                            <div class="col-md-6 mgbt-xs-10 mgtp-20">
+                                                <div class="mgtp-10">
+                                                    <button class="btn vd_bg-green vd_white" type="submit"  name="update_extend_days" id="update_extend_days">Update</button>
+                                                </div>
+                                            </div>
+                                          <div class="col-md-12 mgbt-xs-5"> </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        <!-- Panel Widget -->
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading vd_bg-dark-green">
+                    <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive"> History </a> </h4>
+                </div>
+                <div id="collapseFive" class="panel-collapse collapse">
+                    <div class="vd_content-section clearfix">
+                        <div class="panel widget light-widget">
+                            <div class="panel-body">
+                                {if !empty($remarks_array)}
+                                    <table class="table table-bordered table-striped" id="extend_days_data-tables">
+                                        <thead>
+                                            <tr>
+                                                <th>{attribute_name module="admin" attribute="changed_from"}</th>
+                                                <th>{attribute_name module="admin" attribute="changed_to"}</th>
+                                                <th>{attribute_name module="admin" attribute="reason_for_change"}</th>
+                                                <th>{attribute_name module="admin" attribute="effective_from"}</th>
+                                                <th>{attribute_name module="admin" attribute="update_by"}</th>
+                                                <th>{attribute_name module="admin" attribute="date"}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {foreach name=list item=item key=key from=$remarks_array} 
+                                                <tr >
+                                                    <td >{$item.changed_from}</td>
+                                                    <td >{$item.changed_to}</td>
+                                                    <td >{$item.reason}</td>
+                                                    <td >{$item.effective_from}</td>
+                                                    <td >{$item.updated_by}</td>
+                                                    <td >{$item.date}</td>
+                                                </tr>
+                                            {/foreach}
+                                        </tbody>
+                                    </table>
+                                {else}
+                                    <div class="alert alert-danger alert-dismissable alert-condensed">
+                                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button"><i class="icon-cross"></i></button>
+                                        <i class="fa fa-exclamation-circle append-icon"></i><strong>Oh snap!</strong> Records Not Found 
+                                    </div>
+                                {/if}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                       
+{literal}
+    <!-- Javascript =============================================== --> 
+    <!-- Placed at the end of the document so the pages load faster --> 
+    <script type="text/javascript" src="js/jquery.js"></script> 
+
+     <!-- Specific Page Scripts Put Here -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#extend_days_data-tables').dataTable( {
+                pagingType: "full_numbers",
+                mark:true,
+                dom: 'Bfrtip',lengthMenu: [
+                    [ 10, 25, 50, -1 ],
+                    [ '10 rows', '25 rows', '50 rows', 'Show all' ]
+                ], 
+                buttons: [
+                    'pageLength',
+                    {
+                        extend: 'pdfHtml5',
+                        orientation: 'portrait',
+                        pageSize: 'A4',
+                        exportOptions: {
+                            columns: ':visible'
+                        },download: 'open',
+                        message: 'Extend Option',
+
+                    },
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                            columns: ':visible'
+                        },
+                    },
+                    {
+                        extend: 'csv',
+                        exportOptions: {
+                            columns: ':visible',
+                        },
+                    },
+                    {
+                        extend: 'copy',
+                        exportOptions: {
+                            columns: ':visible'
+                        },
+                    },
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: ':visible'
+                        },
+                        message: 'Extend Option',
+                    },
+                    {
+                        extend: 'colvis',
+                        postfixButtons: [ 'colvisRestore' ]
+                    }
+                    
+                ],
+                
+            } );
+        } );
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            "use strict";
+            var form_submit = $('#extend_days_form');
+            var error_register = $('.alert-danger', form_submit);
+            form_submit.validate({
+                errorElement: 'div', //default input error message container
+                errorClass: 'vd_red', // default input error message class
+                focusInvalid: false, // do not focus the last invalid input
+                ignore: "",
+                rules: {
+                    extend_days_reason_for_change: {
+                        minlength: 5,
+                        required: true
+                    },				
+                },
+                invalidHandler: function (event, validator) { //display error alert on form submit              
+                    error_register.fadeIn(500);
+                    scrollTo(form_submit,-100);
+                },
+                submitHandler: function(form) {                    
+                    $('#update_extend_days').attr("disabled", true);
+                    form.submit();
+                },
+
+            });
+        });
+    </script>
+{/literal}

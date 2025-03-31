@@ -1,0 +1,6 @@
+VMS NUMBER SEQUENCE NOT EXIST;error!VMS Number Sequence not exist;error! Contact Admin;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+INVALID REQUEST;error! Invalid Request Called;error! Invalid Request;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+INVALID PAGE;error!Invalid Page Request Called;error!Invalid Page Request;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+create_vendor;error! Permission Denied;error! The user has no permission to Add Vendor;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+INVALID SUM;error! Invalid Sum;error! SUM OF CATEGORY AND SUM OF AGENDA SHOULD BE EQUAL TO 100;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+VENDOR MANAGEMENT NUMBER SEQUENCE NOT EXIST;error!Number Sequence not exist;error! Contact Admin;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>

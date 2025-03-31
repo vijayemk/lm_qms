@@ -1,0 +1,35 @@
+admin_module;error! Permission Denied  ;error! The user has no permission to view Admin Module  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+audit_trial;error! Permission Denied  ;error! The user has no permission to view Audit Trail  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+expired_sop;error! Permission Denied  ;error! The user has no permission to view Expired SOP  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+expired;error! Permission Denied  ;error! The user has no permission to view Expired Document  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+sop_revise_effective_date;error! Permission Denied  ;error! The user has no permission to Revise  SOP Effective Date  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+sop_create;error! Permission Denied  ;error! The user has no permission to Create SOP  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+sop_drop;error! Permission Denied  ;error! The user has no permission to Drop SOP  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+sop_transfer;error! Permission Denied  ;error! The user has no permission to Transfer SOP  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+sop_extend;error! Permission Denied  ;error! The user has no permission to Extend SOP  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+preloaded_template;error! Permission Denied  ;error! The user has no permission to Create Pre Loaded Template  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+sop_view;error! Permission Denied  ;error! The user has no permission to View SOP  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+spec_view;error! Permission Denied  ;error! The user has no permission to View STP  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+gtp_view;error! Permission Denied  ;error! The user has no permission to View GTP  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+policy_view;error! Permission Denied  ;error! The user has no permission to View GTP  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+qm_view;error! Permission Denied  ;error! The user has no permission to View GTP  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+smf_view;error! Permission Denied  ;error! The user has no permission to View GTP  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+protocol_view;error! Permission Denied  ;error! The user has no permission to View Protocol  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+absolute_protocol;error! Permission Denied  ;error! The user has no permission to view Absolute Protocol  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+protocol_revise_effective_date;error! Permission Denied  ;error! The user has no permission to Revise Protocol Effective Date  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+protocol_create;error! Permission Denied  ;error! The user has no permission to Create Protocol  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+protocol_extend;error! Permission Denied  ;error! The user has no permission to Extend Protocol  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+INVALID PAGE;error!Invalid Page Request Called;error!Invalid Page Request;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+CAN NOT RESET ADMIN PASSWORD;error! CAN NOT RESET ADMIN PASSWORD  ;error! CAN NOT RESET ADMIN PASSWORD  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+CAN NOT UPDATE ADMIN ACCOUNT;error! CAN NOT UPDATE ADMIN ACCOUNT  ;error! CAN NOT UPDATE ADMIN ACCOUNT  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+CAN NOT DISABLE ADMIN ACCOUNT;error! CAN NOT DISABLE ADMIN ACCOUNT  ;error! CAN NOT DISABLE ADMIN ACCOUNT  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+INVALID REQUEST;error! Invalid Request Called;error! Invalid Request;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+PLANT VIEW RESTRICTED;error! Permission Denied  ;error! The user has no permission to view  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+INSERT_REQUEST_FAILED;error! Resource Not Created  ;error! Resource Not Created  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+UPDATE_REQUEST_FAILED;error! Requested Resource Not Updated  ;error! Requested Resource Not Updated  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+DELETE_REQUEST_FAILED;error! Requested Resource Not DELETED  ;error! Requested Resource Not Updated  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+INTEGRATION_FAILED;error! Requested Resource Not Initiated  ;error! Requested Resource Not Initiated  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+INVALID_OBJECT_ID_REQUESTED;error! Invalid Object Id Called  ;error! Requested Field Not Exist  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+INVALID_JSON_FORMAT;error! Invalid Json Format  ;error! Invalid Json Format  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+FILE_UPLOAD_FAILED;error! Unable To Upload File  ;error! Unable To Upload File  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+

@@ -1,0 +1,22 @@
+<?php
+
+// Dashboard Start
+$ATTRIBUTE_NAME ['dash']['qms_ccm_details_view'] = 'select dept_name,classification_name,approval_status,status,user_name,target_date,plant_name,close_out_date,wf_status,completed_date,object_id from qms_ccm_details_view where plant_id like \'$arg[0]\' and dept_id like \'$arg[1]\' and user_id like \'$arg[2]\' and year >= \'$arg[3]\' and year <= \'$arg[4]\' and status like \'$arg[5]\' and wf_status like \'$arg[6]\'';
+$ATTRIBUTE_NAME ['dash']['qms_ams_details_view'] = 'select audit_type_name,audit_sub_type_name,user_name,dept_name,plant_name,status,from_date,to_date,wf_status,audit_lead_name,object_id from qms_ams_details_view where plant_id like \'$arg[0]\' and dept_id like \'$arg[1]\' and user_id like \'$arg[2]\' and year >= \'$arg[3]\' and year <= \'$arg[4]\' and status like \'$arg[5]\' and wf_status like \'$arg[6]\'';
+$ATTRIBUTE_NAME ['dash']['qms_capa_details_view'] = 'select dept_name,approval_status,status,wf_status,user_name,target_date,plant_name,close_out_date,completed_date,object_id from qms_capa_details_view where plant_id like \'$arg[0]\' and dept_id like \'$arg[1]\' and user_id like \'$arg[2]\' and year >= \'$arg[3]\' and year <= \'$arg[4]\' and status like \'$arg[5]\' and wf_status like \'$arg[6]\'';
+$ATTRIBUTE_NAME ['dash']['qms_vms_details_view'] = 'select vendor_org_name,vendor_plant_name,approval_status,status,wf_status,user_name,plant_name,dept_name,vendor_status,final_score,object_id from qms_vms_details_view where plant_id like \'$arg[0]\' and dept_id like \'$arg[1]\' and user_id like \'$arg[2]\' and year >= \'$arg[3]\' and year <= \'$arg[4]\' and status like \'$arg[5]\' and wf_status like \'$arg[6]\'';
+$ATTRIBUTE_NAME ['dash']['qms_dms_details_view'] = 'select dept_name,date_of_occurrence,date_of_discovery,classification_name,approval_status,status,wf_status,user_name,target_date,reporting_date,completed_date,plant_name,close_out_date,object_id from qms_dms_details_view where plant_id like \'$arg[0]\' and dept_id like \'$arg[1]\' and user_id like \'$arg[2]\' and year >= \'$arg[3]\' and year <= \'$arg[4]\' and status like \'$arg[5]\' and wf_status like \'$arg[6]\'';
+$ATTRIBUTE_NAME ['dash']['dms_sop_details_view'] = 'select object_id,sop_type_name,sop_no,sop_name,revision,supersedes,effective_date,expiry_date,is_latest_revision,published_status from dms_sop_details_view where plant_id like \'$arg[0]\' and dept_id like \'$arg[1]\' and user_id like \'$arg[2]\' and year >= \'$arg[3]\' and year <= \'$arg[4]\' and published_status like \'$arg[5]\'';
+$ATTRIBUTE_NAME ['dash']['dashboard_filter_view'] = 'SELECT MIN(year), module FROM $arg[0]_dashboard_view GROUP BY module,lm_doc_id ORDER BY module ASC';
+$ATTRIBUTE_NAME ['dash']['dashboard_data_view'] = 'SELECT status,SUM(total),lm_doc_id FROM $arg[0]_dashboard_view WHERE plant_id LIKE \'$arg[1]\' AND dept_id LIKE \'$arg[2]\' AND year >= \'$arg[3]\' AND year <= \'$arg[4]\' AND lm_doc_id IN (' . implode(',', array_map('quote', $arg[5])) . ') GROUP BY module,lm_doc_id ORDER BY module ASC';
+$ATTRIBUTE_NAME ['dash']['group_status_view'] = 'SELECT status FROM $arg[0]_dashboard_view GROUP BY status ORDER BY status ASC';
+$ATTRIBUTE_NAME ['dash']['dashboard_trending_view'] = 'SELECT module,status,SUM(total) FROM $arg[0]_dashboard_view WHERE module LIKE \'$arg[2]\' AND plant_id LIKE \'$arg[1]\' AND year = \'$arg[3]\' GROUP BY  module, status ORDER BY module ASC';
+
+
+$ATTRIBUTE_NAME ['dash']['dash_doc_group_start_year'] = 'SELECT MIN(year) FROM $arg[0]_dashboard_view';
+$ATTRIBUTE_NAME ['dash']['dash_modules'] = 'SELECT lm_doc_id,module FROM $arg[0]_dashboard_view GROUP BY lm_doc_id,module ORDER BY lm_doc_id';
+$ATTRIBUTE_NAME ['dash']['dash_module_statuses'] = 'SELECT status FROM $arg[0]_dashboard_view GROUP BY status ORDER BY status';
+$ATTRIBUTE_NAME ['dash']['dash_modules_status_count'] = 'SELECT sum(total), lm_doc_id, module, status FROM $arg[0]_dashboard_view WHERE module = \'$arg[1]\' AND year >= \'$arg[2]\' AND year <= \'$arg[3]\' AND plant_id LIKE \'$arg[4]\' AND dept_id LIKE \'$arg[5]\' GROUP BY lm_doc_id, module, status ORDER BY module';
+$ATTRIBUTE_NAME ['dash']['dash_trending_data'] = 'SELECT sum(total), module, status FROM $arg[0]_dashboard_view WHERE module = \'$arg[1]\' AND year = \'$arg[2]\' AND plant_id LIKE \'$arg[3]\' AND dept_id LIKE \'$arg[4]\' GROUP BY lm_doc_id, module, status ORDER BY module';
+
+// Dashboard End

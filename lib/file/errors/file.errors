@@ -1,0 +1,4 @@
+TEMPLATE ALREADY MOVED;error! Template already moved;error! ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+INVALID COPY TYPE;error! Invalid Copy Type Request Called;error! INVALID COPY TYPE;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+PERMISSION DENIED TO DOWNLOAD THIS COPY TYPE;error! Invalid Copy Type Request Called;error! PERMISSION DENIED TO DOWNLOAD THIS COPY TYPE;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+PAGE EXPIRED;error! Requested URL has expired;error! Unauthorized Access ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>

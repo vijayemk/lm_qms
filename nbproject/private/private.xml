@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/inelplm/www/html/lm_qms_atul_22sep24/lib/dms/templates/view_dms.dms.tpl</file>
+            <file>file:/inelplm/www/html/lm_qms_atul_22sep24/configs/const.php</file>
+            <file>file:/inelplm/www/html/lm_qms_atul_22sep24/lib/ams/actions/view_ams.ams.php</file>
+            <file>file:/inelplm/www/html/lm_qms_atul_22sep24/lib/ams/templates/view_ams.ams.tpl</file>
+            <file>file:/inelplm/www/html/lm_qms_atul_22sep24/lib/ams/resources/ams.res.php</file>
+            <file>file:/inelplm/www/html/lm_qms_atul_22sep24/lib/capa/templates/view_capa.capa.tpl</file>
+            <file>file:/inelplm/www/html/lm_qms_atul_22sep24/includes/ajax/sajax_functions.php</file>
+            <file>file:/inelplm/www/html/lm_qms_atul_22sep24/lib/ams/functions/Ams_Processor.func.php</file>
+            <file>file:/inelplm/www/html/lm_qms_atul_22sep24/vendors/custom_lm/js/custom.js</file>
+            <file>file:/inelplm/www/html/lm_qms_atul_22sep24/includes/functions/Admin_Processor.func.php</file>
+            <file>file:/inelplm/www/html/lm_qms_atul_22sep24/lib/webmail/functions/lmMail.func.php</file>
+        </group>
+    </open-files>
+</project-private>

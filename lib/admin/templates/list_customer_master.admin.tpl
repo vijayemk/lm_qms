@@ -1,0 +1,492 @@
+<script>
+    {include file="templates/insert_sajax.tpl"}
+</script>
+<!-- Specific CSS -->
+<link rel="stylesheet" href="plugins/dataTables/DataTables_Export/buttons.dataTables.min.css">
+<link rel="stylesheet" href="plugins/dataTables/DataTables_Export/dataTables.bootstrap.min.css">
+<link rel="stylesheet" href="plugins/dataTables/DataTables_Export/datatables.mark.min.css">
+<div class="vd_head-section clearfix">
+    <div class="vd_panel-header">
+        <ul class="breadcrumb">
+            <li><a href="index.php?module=dash&action=default_dashboard">Home</a> </li>
+            <li class="active">Administration </li>
+            <li class="active">Settings </li>
+            <li class="active">QMS Master Data </li>
+            <li class="active">Customer Master</li>
+        </ul>
+        <div class="vd_panel-menu hidden-sm hidden-xs" data-intro="<strong>Expand Control</strong><br/>To expand content page horizontally, vertically, or Both. If you just need one button just simply remove the other button code." data-step=5  data-position="left">
+            <div data-action="remove-navbar" data-original-title="Remove Navigation Bar Toggle" data-toggle="tooltip" data-placement="bottom" class="remove-navbar-button menu"> <i class="fa fa-arrows-h"></i> </div>
+            <div data-action="remove-header" data-original-title="Remove Top Menu Toggle" data-toggle="tooltip" data-placement="bottom" class="remove-header-button menu"> <i class="fa fa-arrows-v"></i> </div>
+            <div data-action="fullscreen" data-original-title="Remove Navigation Bar and Top Menu Toggle" data-toggle="tooltip" data-placement="bottom" class="fullscreen-button menu"> <i class="glyphicon glyphicon-fullscreen"></i> </div>
+        </div>
+    </div>
+</div>
+<div class="panel widget">
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading vd_bg-dark-green">
+                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Add Customer Master</a> </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse in">
+                <div class="vd_content-section clearfix">
+                    <div class="panel widget light-widget">
+                        <div class="panel-body">
+                            <div class="modal-wide-width">
+                                <div class="modal-content">
+                                    <div class="modal-header vd_bg-blue vd_white">
+                                        <h4 class="modal-title" id="myModalLabel">Input - Form </h4>
+                                    </div >
+                                    <div class="panel-body">    
+                                        <form name="add_customer_dtls-form" method="post" action="{$smarty.server.REQUEST_URI}" class="form-horizontal" role="form" id="add_customer_dtls-form" autocomplete="off">
+                                            <div class="alert alert-danger vd_hidden">
+                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="icon-cross"></i></button>
+                                                <span class="vd_alert-icon"><i class="fa fa-exclamation-circle vd_red"></i></span><strong>Oh snap!</strong> Change a few things up and try submitting again.
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-6">
+                                                    <label class="control-label">{attribute_name module="admin" attribute="customer_name"} </label><span class="vd_red">*</span>
+                                                    <div class="controls">
+                                                        <input type="text" placeholder="Min 2 - Max 50" class="required customer_name" name="acustomer_name" id="acustomer_name" required title="Enter Valid name">
+                                                        <span class="font-semibold vd_red error_exists"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="control-label">{attribute_name module="admin" attribute="short_name"} <span class="vd_red">*</span></label>
+                                                    <div class="controls">
+                                                        <input type="text" placeholder="Min 2 - Max 50" class="required short_name" name="ashort_name" id="ashort_name" required title="Enter Valid Short Name">
+                                                        <span class="font-semibold vd_red error_exists"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-6">
+                                                    <label class="control-label">{attribute_name module="admin" attribute="address"} <span class="vd_red">*</span></label>
+                                                    <div class="controls">
+                                                        <textarea type="text" placeholder="Min 6" class="required" name="aaddress" id="aaddress" required title="Enter Valid Address"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="control-label">{attribute_name module="admin" attribute="city"} <span class="vd_red">*</span></label>
+                                                    <div class="controls">
+                                                        <textarea type="text" placeholder="Min 2 - Max 50" class="required" name="acity" id="acity" required title="Enter Valid City"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-6">
+                                                    <label class="control-label">{attribute_name module="admin" attribute="state"} <span class="vd_red">*</span></label>
+                                                    <div class="controls">
+                                                        <input type="text" placeholder="Min 2 - Max 50" class="required" name="astate" id="astate" required title="Enter Valid State">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="control-label">{attribute_name module="admin" attribute="country"} <span class="vd_red">*</span></label>
+                                                    <div class="controls">
+                                                        <input type="text" placeholder="Min 2 - Max 50" class="required" name="acountry" id="acountry" required title="Enter Valid Country">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-6">
+                                                    <label class="control-label">{attribute_name module="admin" attribute="pincode"} <span class="vd_red">*</span></label>
+                                                    <div class="controls">
+                                                        <input type="text" placeholder="Min 6 - Max 50" class="required" name="apincode" id="apincode" required title="Enter Valid Pincode">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="control-label">{attribute_name module="admin" attribute="contact_person_name"} <span class="vd_red">*</span></label>
+                                                    <div class="controls">
+                                                        <input type="text" placeholder="Min 2 - Max 50" class="required" name="acontact_person_name" id="acontact_person_name" required title="Enter Valid Name">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-6">
+                                                    <label class="control-label">{attribute_name module="admin" attribute="contact_email"} </label><span class="vd_red">*</span>
+                                                    <div class="controls">
+                                                        <input type="text" placeholder="Min 2 - Max 50" class="required customer_email" name="acontact_email" id="acontact_email" required title="Enter Valid e-mail">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="control-label">{attribute_name module="admin" attribute="contact_no"} <span class="vd_red">*</span></label>
+                                                    <div class="controls">
+                                                        <input type="text" placeholder="Min 2 - Max 50" class="required " name="acontact_no" id="acontact_no" required title="Enter Valid Contact Number">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-actions-condensed row mgbt-xs-0 text-right">
+                                                <div class="col-sm-12">
+                                                    <input type="hidden" name="submit_add">
+                                                    <button class="btn vd_bg-green vd_white" type="submit"  name="add" id="add" ><span class="menu-icon"><i class="fa fa-fw fa-plus-circle"></i></span> Add</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading vd_bg-dark-green">
+                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Customer Master List</a> </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse">
+                <div class="vd_content-section clearfix">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel widget">
+                                <div class="panel-body table-responsive">
+                                    {if !empty($customerlist)}
+                                        <table class="table table-bordered table-striped generate_datatable" title="Customer List" data-ori="landscape" data-pagesize="A3"> 
+                                            <thead>
+                                                <tr>
+                                                    <td>{attribute_name module="admin" attribute="sl_no"}</td>
+                                                    <th>{attribute_name module="admin" attribute="customer_name"}</th>
+                                                    <th>{attribute_name module="admin" attribute="short_name"}</th>
+                                                    <th>{attribute_name module="admin" attribute="address"}</th>
+                                                    <th>{attribute_name module="admin" attribute="city"}</th>
+                                                    <th>{attribute_name module="admin" attribute="state"}</th>
+                                                    <th>{attribute_name module="admin" attribute="country"}</th>
+                                                    <th>{attribute_name module="admin" attribute="pincode"}</th>
+                                                    <th>{attribute_name module="admin" attribute="contact_person_name"}</th>
+                                                    <th>{attribute_name module="admin" attribute="contact_email"}</th>
+                                                    <th>{attribute_name module="admin" attribute="contact_no"}</th>
+                                                    <th>{attribute_name module="admin" attribute="is_enabled"}</th>
+                                                    <th>{attribute_name module="admin" attribute="action"}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {foreach name=list item=item key=key from=$customerlist} 
+                                                    <tr >
+                                                        <td></td>
+                                                        <td >{$item.customer_name}</td>
+                                                        <td >{$item.short_name}</td>
+                                                        <td >{$item.address}</td>
+                                                        <td >{$item.city}</td>
+                                                        <td >{$item.state}</td>
+                                                        <td >{$item.country}</td>
+                                                        <td >{$item.pincode}</td>
+                                                        <td >{$item.contact_person_name}</td>
+                                                        <td >{$item.contact_email}</td>
+                                                        <td >{$item.contact_no}</td>
+                                                        <td >{$item.is_enabled}</td>
+                                                        <td ><button class="btn vd_bg-blue vd_white" data-toggle="modal" onclick="update_customer_det({htmlspecialchars(json_encode($item))});"  data-target="#edit-customer_detials"><i class="fa fa-pencil"></i></button></td>
+                                                    </tr>
+                                                {/foreach}
+                                            </tbody>
+                                        </table>
+                                    {else}
+                                        <div class="alert alert-danger alert-dismissable alert-condensed">
+                                            <button aria-hidden="true" data-dismiss="alert" class="close" type="button"><i class="icon-cross"></i></button>
+                                            <i class="fa fa-exclamation-circle append-icon"></i><strong>Oh snap!</strong> Records Not Found 
+                                        </div>
+                                    {/if}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="edit-customer_detials" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header vd_bg-blue vd_white">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+                <h4 class="modal-title" id="myModalLabel">Edit Customer Master</h4>
+            </div>
+            <div class="modal-body">
+                <form name="edit_customer_dtls-form" method="post" action="{$smarty.server.REQUEST_URI}" class="form-horizontal" role="form" id="edit_customer_dtls-form" autocomplete="off">
+                    <div class="alert alert-danger vd_hidden">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="icon-cross"></i></button>
+                        <span class="vd_alert-icon"><i class="fa fa-exclamation-circle vd_red"></i></span><strong>Oh snap!</strong> Change a few things up and try submitting again.
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <label class="control-label">{attribute_name module="admin" attribute="customer_name"} </label><span class="vd_red">*</span>
+                            <div class="controls">
+                                <input type="text" placeholder="Min 2 - Max 50" class="required customer_name" name="ucustomer_name" id="ucustomer_name" required title="Enter Valid name">
+                                <span class="font-semibold vd_red error_exists"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">{attribute_name module="admin" attribute="short_name"} </label><span class="vd_red">*</span>
+                            <div class="controls">
+                                <input type="text" placeholder="Min 2 - Max 50" class="required short_name" name="ushort_name" id="ushort_name" required title="Enter Valid Short Name">
+                                <span class="font-semibold vd_red error_exists"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <label class="control-label">{attribute_name module="admin" attribute="address"} <span class="vd_red">*</span></label>
+                            <div class="controls">
+                                <textarea type="text" rows="3" placeholder="Min 6" class="required" name="uaddress" id="uaddress" required title="Enter Valid Address"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">{attribute_name module="admin" attribute="city"} <span class="vd_red">*</span></label>
+                            <div class="controls">
+                                <textarea type="text" rows="3" placeholder="Min 2 - Max 50" class="required" name="ucity" id="ucity" required title="Enter Valid City"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <label class="control-label">{attribute_name module="admin" attribute="state"} <span class="vd_red">*</span></label>
+                            <div class="controls">
+                                <input type="text" placeholder="Min 2 - Max 50" class="required" name="ustate" id="ustate" required title="Enter Valid State">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">{attribute_name module="admin" attribute="country"} <span class="vd_red">*</span></label>
+                            <div class="controls">
+                                <input type="text" placeholder="Min 2 - Max 50" class="required" name="ucountry" id="ucountry" required title="Enter Valid Country">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <label class="control-label">{attribute_name module="admin" attribute="pincode"} <span class="vd_red">*</span></label>
+                            <div class="controls">
+                                <input type="text" placeholder="Min 6 - Max 50" class="required" name="upincode" id="upincode" required title="Enter Valid Pincode">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">{attribute_name module="admin" attribute="contact_person_name"} <span class="vd_red">*</span></label>
+                            <div class="controls">
+                                <input type="text" placeholder="Min 2 - Max 50" class="required" name="ucontact_person_name" id="ucontact_person_name" required title="Enter Valid Name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <label class="control-label">{attribute_name module="admin" attribute="contact_email"} </label><span class="vd_red">*</span>
+                            <div class="controls">
+                                <input type="text" placeholder="Min 2 - Max 50" class="required customer_email" name="ucontact_email" id="ucontact_email" required title="Enter Valid e-mail">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">{attribute_name module="admin" attribute="contact_no"} <span class="vd_red">*</span></label>
+                            <div class="controls">
+                                <input type="text" placeholder="Min 2 - Max 50" class="required " name="ucontact_no" id="ucontact_no" required title="Enter Valid Contact Number">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">{attribute_name module="admin" attribute="is_enabled"} <span class="vd_red">*</span></label>
+                            <div class="controls">
+                                <select class="required" name="uis_enabled" id="uis_enabled"  required title="Select Valid Type">
+                                    <option value="">Select</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions-condensed row mgbt-xs-0 text-right">
+                        <div class="col-sm-12">
+                            <input type="hidden" name="uobject_id" id="uobject_id">
+                            <input type="hidden" name="submit_update">
+                            <button class="btn vd_bg-red vd_white page_reload" type="button" ><span class="menu-icon"><i class="fa fa-fw fa-refresh"></i></span> Close</button>
+                            <button class="btn vd_bg-green vd_white" type="submit"  name="update" id="update" ><span class="menu-icon"><i class="fa fa-fw fa-pencil"></i></span> Update</button>                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{literal}
+    <!-- Javascript =============================================== --> 
+    <!-- Placed at the end of the document so the pages load faster --> 
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            "use strict";
+            // Add Customer Details
+            var form_submit = $('#add_customer_dtls-form');
+            var error_register = $('.alert-danger', form_submit);
+            form_submit.validate({
+                errorElement: 'div', //default input error message container
+                errorClass: 'vd_red', // default input error message class
+                focusInvalid: false, // do not focus the last invalid input
+                ignore: "",
+                rules: {
+                    acustomer_name: {
+                        minlength: 2,
+                        maxlength: 50,
+                        required: true
+                    },
+                    ashort_name: {
+                        minlength: 2,
+                        maxlength: 50,
+                        required: true
+                    },
+                    aaddress: {
+                        minlength: 2,
+                        required: true
+                    },
+                    acity: {
+                        minlength: 2,
+                        maxlength: 50,
+                        required: true
+                    },
+                    astate: {
+                        minlength: 2,
+                        maxlength: 50,
+                        required: true
+                    },
+                    acountry: {
+                        minlength: 2,
+                        maxlength: 50,
+                        required: true
+                    },
+                    apincode: {
+                        minlength: 6,
+                        maxlength: 50,
+                        required: true,
+                        digits: true
+                    },
+                    acontact_email: {
+                        required: true,
+                        maxlength: 50,
+                        email: true
+                    },
+                    acontact_person_name: {
+                        minlength: 2,
+                        maxlength: 50,
+                        required: true
+                    },
+                    acontact_no: {
+                        required: true,
+                        maxlength: 50,
+                        digits: true
+                    },
+
+                },
+                invalidHandler: function (event, validator) { //display error alert on form submit              
+                    error_register.fadeIn(500);
+                    scrollTo(form_submit, -100);
+                },
+                submitHandler: function (form) {
+                    if (submit_handler_error_exists(form)) {
+                        return false;
+                    }
+                    $('#add').attr("disabled", true);
+                    form.submit();
+                },
+            });
+            // Edit Customer Details
+            var form_submit = $('#edit_customer_dtls-form');
+            var error_register = $('.alert-danger', form_submit);
+            form_submit.validate({
+                errorElement: 'div', //default input error message container
+                errorClass: 'vd_red', // default input error message class
+                focusInvalid: false, // do not focus the last invalid input
+                ignore: "",
+                rules: {
+                    ucustomer_name: {
+                        minlength: 2,
+                        maxlength: 50,
+                        required: true
+                    },
+                    ushort_name: {
+                        minlength: 2,
+                        maxlength: 50,
+                        required: true
+                    },
+                    uaddress: {
+                        minlength: 2,
+                        required: true
+                    },
+                    ucity: {
+                        minlength: 2,
+                        maxlength: 50,
+                        required: true
+                    },
+                    ustate: {
+                        minlength: 2,
+                        maxlength: 50,
+                        required: true
+                    },
+                    ucountry: {
+                        minlength: 2,
+                        maxlength: 50,
+                        required: true
+                    },
+                    upincode: {
+                        minlength: 6,
+                        maxlength: 50,
+                        required: true,
+                        digits: true
+                    },
+                    ucontact_email: {
+                        required: true,
+                        maxlength: 50,
+                        email: true
+                    },
+                    ucontact_person_name: {
+                        minlength: 2,
+                        maxlength: 50,
+                        required: true
+                    },
+                    ucontact_no: {
+                        required: true,
+                        maxlength: 50,
+                        digits: true
+                    },
+                    uis_enabled: {
+                        required: true,
+
+                    },
+
+                },
+                invalidHandler: function (event, validator) { //display error alert on form submit              
+                    error_register.fadeIn(500);
+                    scrollTo(form_submit, -100);
+                },
+                submitHandler: function (form) {
+                    if (submit_handler_error_exists(form)) {
+                        return false;
+                    }
+                    $('#update').attr("disabled", true);
+                    form.submit();
+                },
+            });
+            $(document).on('keyup', '.customer_name', function () {
+                let ele = $(this);
+                ele.val(ele.val().toUpperCase());
+                x_is_customer_name_exist(ele.val(), function (result) {
+                    ajax_respone_handler_value_exist(result, ele);
+                });
+            });
+            $(document).on('keyup', '.short_name', function () {
+                let ele = $(this);
+                ele.val(ele.val().toUpperCase());
+                x_is_customer_short_name_exist(ele.val(), function (result) {
+                    ajax_respone_handler_value_exist(result, ele);
+                });
+            });
+        });
+
+        function update_customer_det(data) {
+            $("#uobject_id").val(data.object_id);
+            $("#ucustomer_name").val(data.customer_name);
+            $("#ushort_name").val(data.short_name);
+            $("#uaddress").val(data.address);
+            $("#ucity").val(data.city);
+            $("#ustate").val(data.state);
+            $("#ucountry").val(data.country);
+            $("#upincode").val(data.pincode);
+            $("#ucontact_person_name").val(data.contact_person_name);
+            $("#ucontact_email").val(data.contact_email);
+            $("#ucontact_no").val(data.contact_no);
+            $("#uis_enabled").val(data.is_enabled);
+        }
+    </script>
+{/literal}

@@ -1,0 +1,82 @@
+.timeline {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    overflow: auto;
+}
+
+.li {
+    transition: all 200ms ease-in;
+}
+
+.timestamp {
+    margin-bottom: 20px;
+    padding: 0px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 100;
+}
+
+.status_stage {
+    display: flex;
+    justify-content: center;
+    border-top: 2px solid #D6DCE0;
+    position: relative;
+    transition: all 200ms ease-in;
+}
+.status_stage h6     {
+    font-weight: 600;
+}
+.status_stage:before {
+    content: '';
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    border-radius: 25px;
+    border: 1px solid #ddd;
+    position: absolute;
+    top: -15px;
+    left: 42%;
+    transition: all 200ms ease-in;
+}
+
+.li.complete .status_stage {
+    border-top: 2px solid #66DC71;
+}
+.li.complete .status_stage:before {
+    background-color: #66DC71;
+    border: none;
+    transition: all 200ms ease-in;
+    
+}
+.li.complete .status_stage h4 {
+    color: #66DC71;
+}
+
+@media (min-device-width: 320px) and (max-device-width: 700px) {
+    .timeline {
+        overflow: auto;
+    }
+
+}
+.li.complete.current_stage .status_stage:before {
+    background: #f85d2c;
+    -webkit-animation-name: fa-beat;
+    animation-name: fa-beat;
+    -webkit-animation-delay: var(--fa-animation-delay,0s);
+    animation-delay: var(--fa-animation-delay,0s);
+    -webkit-animation-direction: var(--fa-animation-direction,normal);
+    animation-direction: var(--fa-animation-direction,normal);
+    -webkit-animation-duration: var(--fa-animation-duration,1s);
+    animation-duration: var(--fa-animation-duration,1s);
+    -webkit-animation-iteration-count: var(--fa-animation-iteration-count,infinite);
+    animation-iteration-count: var(--fa-animation-iteration-count,infinite);
+    -webkit-animation-timing-function: var(--fa-animation-timing,ease-in-out);
+    animation-timing-function: var(--fa-animation-timing,ease-in-out);
+}
+.li.complete.current_stage .status_stage h5{
+    font-weight: 900;
+    color:#555658 !important;
+}
+

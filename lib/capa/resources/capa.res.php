@@ -1,0 +1,136 @@
+<?php
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ * @author Gopinath R
+ * @since 10/03/2020
+ * @package admin
+ * @version 1.0
+ */
+$ATTRIBUTE_NAME ['capa']['s.no'] = "S.No.";
+$ATTRIBUTE_NAME ['capa']['capa_no'] = "CAPA No.";
+$ATTRIBUTE_NAME ['capa']['present_system'] = "Present System";
+$ATTRIBUTE_NAME ['capa']['doc_name'] = "Source Document Name";
+$ATTRIBUTE_NAME ['capa']['doc_no'] = "Source Document Number";
+$ATTRIBUTE_NAME ['capa']['ref_doc_no'] = "Reference Document Number";
+$ATTRIBUTE_NAME ['capa']['ref_doc_name'] = "Reference Document Name";
+$ATTRIBUTE_NAME ['capa']['proposed_action'] = "Proposed Action";
+$ATTRIBUTE_NAME ['capa']['non_conformity'] = "Non-conformity";
+$ATTRIBUTE_NAME ['capa']['root_causes_analysis'] = "Root Causes Analysis";
+$ATTRIBUTE_NAME ['capa']['acceptance_criteria'] = "Acceptance Criteria";
+$ATTRIBUTE_NAME ['capa']['origin_dept'] = "Department";
+$ATTRIBUTE_NAME ['capa']['corrective_action'] = "Corrective Action";
+$ATTRIBUTE_NAME ['capa']['preventive_action'] = "Preventive Action | Risk Mitigation Action";
+$ATTRIBUTE_NAME ['capa']['review_comments'] = "Review Comments";
+$ATTRIBUTE_NAME ['capa']['created_by'] = "Created By";
+$ATTRIBUTE_NAME ['capa']['department'] = "Department";
+$ATTRIBUTE_NAME ['capa']['date'] = "Date";
+$ATTRIBUTE_NAME ['capa']['username'] = "UserName";
+$ATTRIBUTE_NAME ['capa']['user_list'] = "Attendees";
+$ATTRIBUTE_NAME ['capa']['remarks'] = "Remarks";
+$ATTRIBUTE_NAME ['capa']['action'] = "Action";
+$ATTRIBUTE_NAME ['capa']['target_date'] = "Target Date";
+$ATTRIBUTE_NAME ['capa']['meeting_required'] = "Is Meeting Required?";
+$ATTRIBUTE_NAME ['capa']['training_required'] = "Is Training Required?";
+$ATTRIBUTE_NAME ['capa']['update_training_status'] = "Update Training Status";
+$ATTRIBUTE_NAME ['capa']['alert'] = "Alert";
+$ATTRIBUTE_NAME ['capa']['select_trainees'] = "Trainees";
+$ATTRIBUTE_NAME ['capa']['online_exam_assessment'] = "Is Online Exam Required?";
+$ATTRIBUTE_NAME ['capa']['online_training_link'] = "Online Training Link";
+$ATTRIBUTE_NAME ['capa']['send_mail_to'] = "Send Mail To";
+$ATTRIBUTE_NAME ['capa']['want_to_reschedule'] = "Want To Re-schedule?";
+$ATTRIBUTE_NAME ['capa']['training_date'] = "Date of Training";
+$ATTRIBUTE_NAME ['capa']['training_time'] = "Time of Training";
+$ATTRIBUTE_NAME ['capa']['meet_date'] = "Meeting Date";
+$ATTRIBUTE_NAME ['capa']['completion_date'] = "Completion Date";
+$ATTRIBUTE_NAME ['capa']['initiation_date'] = "Initiation Date";
+$ATTRIBUTE_NAME ['capa']['meet_time'] = "Meeting Time";
+$ATTRIBUTE_NAME ['capa']['comments'] = "Comments";
+$ATTRIBUTE_NAME ['capa']['venue'] = "Venue";
+$ATTRIBUTE_NAME ['capa']['reason'] = "Reason";
+$ATTRIBUTE_NAME ['capa']['trainer'] = "Trainer";
+$ATTRIBUTE_NAME ['capa']['status'] = "Status";
+$ATTRIBUTE_NAME ['capa']['participants_name'] = "Participants";
+$ATTRIBUTE_NAME ['capa']['recall_user'] = "Recall User";
+$ATTRIBUTE_NAME ['capa']['attempt'] = "Attempt";
+$ATTRIBUTE_NAME ['capa']['invitation_send_to'] = "Invitation To";
+$ATTRIBUTE_NAME ['capa']['participant'] = "Participant";
+$ATTRIBUTE_NAME ['capa']['attendees'] = "Attendee";
+$ATTRIBUTE_NAME ['capa']['identified_activity'] = "Identified Activity";
+$ATTRIBUTE_NAME ['capa']['action'] = "Action";
+$ATTRIBUTE_NAME ['capa']['responsible_person'] = "Responsible Person";
+$ATTRIBUTE_NAME ['capa']['task_review_comments'] = "Task Responsible Person's Comments";
+$ATTRIBUTE_NAME ['capa']['task_reviewer_comments'] = "Task Reviewer's Comments";
+$ATTRIBUTE_NAME ['capa']['task_creator_comments'] = "Task Initiator's Comments";
+$ATTRIBUTE_NAME ['capa']['attachment'] = "Attachment";
+$ATTRIBUTE_NAME ['capa']['implementation'] = "Implementation";
+$ATTRIBUTE_NAME ['capa']['question'] = "Question(s)";
+$ATTRIBUTE_NAME ['capa']['options'] = "Options";
+$ATTRIBUTE_NAME ['capa']['answer'] = "Answer";
+$ATTRIBUTE_NAME ['capa']['order'] = "Order";
+$ATTRIBUTE_NAME ['capa']['s_no'] = "S.No.";
+$ATTRIBUTE_NAME ['capa']['assigned_by'] = "Assigned By";
+$ATTRIBUTE_NAME ['capa']['assigned_date'] = "Assigned Date";
+$ATTRIBUTE_NAME ['capa']['assigned_to'] = "Assigned To";
+$ATTRIBUTE_NAME ['capa']['initiated_by'] = "Initiated By";
+$ATTRIBUTE_NAME ['capa']['initiator'] = "Initiator";
+$ATTRIBUTE_NAME ['capa']['pass_mark'] = "Minimum Pass Mark";
+$ATTRIBUTE_NAME ['capa']['attempt'] = "Attempt";
+$ATTRIBUTE_NAME ['capa']['qns_limit'] = "Question(s) Limit";
+$ATTRIBUTE_NAME ['capa']['recall_user'] = "Recall User";
+$ATTRIBUTE_NAME ['capa']['result'] = "Result";
+$ATTRIBUTE_NAME ['capa']['marks_scored'] = "Mark Scored";
+$ATTRIBUTE_NAME ['capa']['completed_date'] = "Completed Date";
+$ATTRIBUTE_NAME ['capa']['download'] = "Download";
+$ATTRIBUTE_NAME ['capa']['online_training_link'] = "Online Training Link";
+$ATTRIBUTE_NAME ['capa']['online_meeting_link'] = "Online Meeting Link";
+$ATTRIBUTE_NAME ['capa']['request_no'] = "Request No.";
+$ATTRIBUTE_NAME ['capa']['proposed_target_date'] = "Proposed Target Date";
+$ATTRIBUTE_NAME ['capa']['extend_impact'] = "Extend Impact";
+$ATTRIBUTE_NAME ['capa']['existing_target_date'] = "Existing Target Date";
+$ATTRIBUTE_NAME ['capa']['approved_status'] = "Approval Status";
+$ATTRIBUTE_NAME ['capa']['close_out_date'] = "Close-out Date";
+$ATTRIBUTE_NAME ['capa']['plant_name'] = "Plant";
+$ATTRIBUTE_NAME ['capa']['organization'] = "Organization";
+$ATTRIBUTE_NAME ['capa']['select_review_type'] = "Select Review Type";
+$ATTRIBUTE_NAME ['capa']['action_status'] = "Action Status";
+$ATTRIBUTE_NAME ['capa']['capa_report'] = "CAPA Report";
+$ATTRIBUTE_NAME ['capa']['meeting_report'] = "Meeting Report";
+$ATTRIBUTE_NAME ['capa']['training_report'] = "Training Report";
+$ATTRIBUTE_NAME ['capa']['mom_report'] = "MOM Report";
+$ATTRIBUTE_NAME ['capa']['capa_for'] = "Capa For";
+$ATTRIBUTE_NAME ['capa']['review_type'] = "Review Type";
+$ATTRIBUTE_NAME ['capa']['select_doc'] = "Enter | Select Document";
+$ATTRIBUTE_NAME ['capa']['corrections'] = "Corrections | Immediate Action Taken";
+$ATTRIBUTE_NAME ['capa']['pd_nc'] = "Present System | Discrepancy | Non-Conformity";
+$ATTRIBUTE_NAME ['capa']['review_stage'] = "Review Stage";
+$ATTRIBUTE_NAME ['capa']['user_name'] = "User Name";
+$ATTRIBUTE_NAME ['capa']['implementation_target_date'] = "Implementaion Target Date";
+$ATTRIBUTE_NAME ['capa']['trigger_type'] = "Trigger Type";
+$ATTRIBUTE_NAME ['capa']['task_id'] = "Task ID";
+$ATTRIBUTE_NAME ['capa']['task_details'] = "Task Details";
+$ATTRIBUTE_NAME ['capa']['task'] = "Task";
+$ATTRIBUTE_NAME ['capa']['pri_resp_per'] = "Primary Responsible Person";
+$ATTRIBUTE_NAME ['capa']['sec_resp_per'] = "Secondary Responsible Person";
+$ATTRIBUTE_NAME ['capa']['type'] = "Type";
+$ATTRIBUTE_NAME ['capa']['task_verification'] = "Task Verfication";
+$ATTRIBUTE_NAME ['capa']['dept_head_review'] = "Dept. Head Review";
+$ATTRIBUTE_NAME ['capa']['my_self'] = "Myself";
+$ATTRIBUTE_NAME ['capa']['cc_required'] = "Is Change Control Required";
+$ATTRIBUTE_NAME ['capa']['tracking_no'] = "Tracking No";
+$ATTRIBUTE_NAME ['capa']['cc_no'] = "Change Control No";
+$ATTRIBUTE_NAME ['capa']['closeout_comments'] = "Close Out Comments";
+$ATTRIBUTE_NAME ['capa']['qa_review'] = "QA Review";
+$ATTRIBUTE_NAME ['capa']['dept_head'] = "Dept. Head";
+$ATTRIBUTE_NAME ['capa']['level'] = "Level";
+$ATTRIBUTE_NAME ['capa']['feedback'] = "Feedback";
+$ATTRIBUTE_NAME ['capa']['effectiveness'] = "Effectiveness";
+$ATTRIBUTE_NAME ['capa']['approval_status'] = "Approval Status";
+$ATTRIBUTE_NAME ['capa']['capa_from'] = "CAPA Triggered From";
+$ATTRIBUTE_NAME ['capa']['temporary_no'] = "(Temporary No.)";
+$ATTRIBUTE_NAME ['capa']['wf_status'] = "Workflow Status";
+$ATTRIBUTE_NAME ['capa']['start_date'] = "Start Date";
+$ATTRIBUTE_NAME ['capa']['end_date'] = "End date";
+?>

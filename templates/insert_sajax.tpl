@@ -1,0 +1,1 @@
+{insert_sajax_javascript}

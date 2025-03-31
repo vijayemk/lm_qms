@@ -1,0 +1,3 @@
+AMS NUMBER SEQUENCE NOT EXIST;error!Audit Document Number not exist for Audit Type;error! Contact Admin;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+ams_create;error! Permission Denied;error! The user has no permission to Create AMS;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+ams_view;error! Permission Denied;error! The user has no permission to View AMS;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>

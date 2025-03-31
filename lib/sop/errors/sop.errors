@@ -1,0 +1,37 @@
+SOP NAME EXIST;error!Double time clicked or Form Submission already been processed.Check your pending Task ;error! SOP Name Exist;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+SOP DRAFT NUMBER SEQUENCE NOT EXIST;error!Draft Number not exist for SOP Type;error! Contact Admin;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+FORMAT NAME EXIST;error!Double time clicked or Form Submission already been processed.Check SOP Format List;error! Format Name Exist;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+ANNEXURE NAME EXIST;error!Double time clicked or Form Submission already been processed.Check SOP Annexure List;error! Annexure Name Exist;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+INVALID EFFECTIVE DATE;error!Effective Date should be greater than the current date ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+SOP LIVE NUMBER SEQUENCE NOT EXIST;error!Live Number not exist for SOP Type;error! Contact Admin;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+INVALID_EXAM_PASSMARK_LIMIT_SETTINGS;error!Exam Pass Mark or Attempt Limit settings not found;error! Contact Admin;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+ALL_QUESTIONS_NOT_ANSWERED;;error!All Questions Not Answered;error! Check all questions are answered;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+NAME EXIST;error!Double time clicked or Form Submission already been processed.Check your pending Task ;error! GTP Name Exist;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+spec_create;error! Permission Denied  ;error! The user has no permission to Create SPEC  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+SPEC DRAFT NUMBER SEQUENCE NOT EXIST;error!Draft Number not exist for specification;error! Contact Admin;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+gtp_create;error! Permission Denied  ;error! The user has no permission to Create GTP  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+GTP NAME EXIST;error!Double time clicked or Form Submission already been processed.Check your pending Task ;error! GTP Name Exist;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+GTP DRAFT NUMBER SEQUENCE NOT EXIST;error!Draft Number not exist for GTP Type;error! Contact Admin;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+policy_create;error! Permission Denied  ;error! The user has no permission to Create Policy  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+POLICY NAME EXIST;error!Double time clicked or Form Submission already been processed.Check your pending Task ;error! Policy Name Exist;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+POLICY DRAFT NUMBER SEQUENCE NOT EXIST;error!Draft Number not exist for POLICY;error! Contact Admin;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+qm_create;error! Permission Denied  ;error! The user has no permission to Create QM  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+QM NAME EXIST;error!Double time clicked or Form Submission already been processed.Check your pending Task ;error! QM Name Exist;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+QM DRAFT NUMBER SEQUENCE NOT EXIST;error!Draft Number not exist for QM;error! Contact Admin;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+smf_create;error! Permission Denied  ;error! The user has no permission to Create QM  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+SMF NAME EXIST;error!Double time clicked or Form Submission already been processed.Check your pending Task ;error! SMF Name Exist;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+SMF DRAFT NUMBER SEQUENCE NOT EXIST;error!Draft Number not exist for SMF;error! Contact Admin;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+LIVE NUMBER SEQUENCE NOT EXIST;error!Live Number not exist;error! Contact Admin;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+FILE NOT COPIED;error! File Not Copied,Contact Admin ;error! File Not Copied,Contact Admin  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+INVALID_QUESTIONS;error!Questions Not Found;error! questions not prepared;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+TRAINEES DETAILS NOT FOUND;error!Trainees details not updated;error! Update Trainees details;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+DEPARTMENT VIEWING RESTRICTED;error! Permission Denied  ;error! The department has no permission to view  ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+PROTOCOL DRAFT NUMBER SEQUENCE NOT EXIST;error!Draft Number not exist for Protocol Type;error! Contact Admin;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+PROTOCOL LIVE NUMBER SEQUENCE NOT EXIST;error!Live Number not exist for Protocol Type;error! Contact Admin;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+PROTOCOL NAME EXIST;error!Double time clicked or Form Submission already been processed.Check your pending Task ;error! Protocol Name Exist;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+sop_search;error! Permission Denied  ;error! The user has no permission ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+qm_search;error! Permission Denied  ;error! The user has no permission ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+sop_timeline;error! Permission Denied  ;error! The user has no permission ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+qm_timeline;error! Permission Denied  ;error! The user has no permission ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+sop_monitoring;error! Permission Denied  ;error! The user has no permission ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>
+view_department_permission;error! Permission Denied  ;error! The user has no permission ;<a href="javascript:history.go(-1)"><font color="blue">Go Back</font></a>

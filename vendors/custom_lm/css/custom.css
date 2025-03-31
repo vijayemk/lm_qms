@@ -1,0 +1,57 @@
+.bootstrap-timepicker-widget{
+    z-index:9999999!important;
+}
+.bootstrap-switch{
+    opacity: 1!important;
+}
+.fa-beat-animation {
+    -webkit-animation-name: fa-beat;
+    animation-name: fa-beat;
+    -webkit-animation-delay: var(--fa-animation-delay,0s);
+    animation-delay: var(--fa-animation-delay,0s);
+    -webkit-animation-direction: var(--fa-animation-direction,normal);
+    animation-direction: var(--fa-animation-direction,normal);
+    -webkit-animation-duration: var(--fa-animation-duration,1s);
+    animation-duration: var(--fa-animation-duration,1s);
+    -webkit-animation-iteration-count: var(--fa-animation-iteration-count,infinite);
+    animation-iteration-count: var(--fa-animation-iteration-count,infinite);
+    -webkit-animation-timing-function: var(--fa-animation-timing,ease-in-out);
+    animation-timing-function: var(--fa-animation-timing,ease-in-out);
+}
+.lm_e-sign {
+    height: 30px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    background-color: #dc1e4d;
+    position: relative;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    box-shadow: 1px 2px 10px 2px #56505070;
+    padding: 10px;
+}
+.lm_zindex-99{
+    z-index:99!important;
+}
+.tooltip-inner{
+    max-width: unset;
+}
+.unset_min_height{
+    min-height: unset !important;
+}
+.vd_content-section {
+    margin-right: 0px !important;
+}
+.lm_grey{
+    background-color: #E5E5E5 !important;
+}
+.popover{
+    max-width: unset !important;
+}
+.audit_trail_stl{
+    text-decoration: underline;
+    font-weight: bold;
+}
+.lm_prewrap{
+    white-space: pre-wrap !important;
+}
